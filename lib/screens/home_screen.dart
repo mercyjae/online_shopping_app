@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
              press: (){Navigator.push(context,MaterialPageRoute(builder: (context)=>
                  DetailsScreen(product:products[index])));
              },)
-       ))
+       )
+       )
 
     ],),);
   }

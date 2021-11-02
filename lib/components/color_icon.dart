@@ -25,7 +25,9 @@ class ColorDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector( onTap: (){},
+    return GestureDetector( onTap: (){
+
+    },
       child: Row(children: [
         Container(width:20,height: 20,
           decoration: BoxDecoration(color:isSelected ? colors: Colors.transparent ,

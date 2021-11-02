@@ -56,8 +56,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     ])),
 
                   ],)
-                ],),
-            ),  Positioned(bottom: 250,
+                ],),),
+              Positioned(bottom: 250,
                   top: 0 ,right: 0,left: 50,
                   child: Container(height: 50,width: 50,
                       child: Image.asset(widget.product.image)),),
