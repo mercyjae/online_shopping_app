@@ -6,11 +6,12 @@ import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/controllers/bag_controller.dart';
 import 'package:online_shopping/models/bag_product.dart';
 import 'package:online_shopping/screens/cart_products.dart';
+
 import '../constants.dart';
 
 class BagView extends StatelessWidget {
-  final CartController controller = Get.put(CartController());
-   BagView({Key? key}) : super(key: key);
+  final BagController controller = Get.put(BagController());
+  BagView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class BagView extends StatelessWidget {
     return SizedBox(
       height: size.height,
       child: Obx(
-            () => ListView.separated(
+        () => ListView.separated(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           itemCount: controller.cartItems.length,
@@ -38,12 +39,11 @@ class BagView extends StatelessWidget {
   }
 }
 
-
-
 class BagCard extends StatefulWidget {
-  final CartController controller;
+  final BagController controller;
   final Product product;
-  const BagCard({Key? key, required this.controller, required this.product}) : super(key: key);
+  const BagCard({Key? key, required this.controller, required this.product})
+      : super(key: key);
 
   @override
   State<BagCard> createState() => _BagCardState();
@@ -112,19 +112,27 @@ class _BagCardState extends State<BagCard> {
               ],
             ),
           ],
-        ),SizedBox(width: 15,),
+        ),
+        SizedBox(
+          width: 15,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: KDefaultPadding + 10),
           child: Text(
             "\$${widget.product.price}",
-            style: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: KDefaultPadding + 10,left: KDefaultPadding + 5),
+          padding: const EdgeInsets.only(
+              top: KDefaultPadding + 10, left: KDefaultPadding + 5),
           child: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.delete,size: 25,),
+            icon: Icon(
+              Icons.delete,
+              size: 25,
+            ),
           ),
         )
       ],

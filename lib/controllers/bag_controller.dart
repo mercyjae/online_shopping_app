@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:online_shopping/models/bag_product.dart';
 
-class CartController extends GetxController {
+class BagController extends GetxController {
   //add  a dict to store the products in the cart
   //var _products = {}.obs;
   var cartItems = <Product>[].obs;

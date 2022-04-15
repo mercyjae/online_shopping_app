@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/bag_controller.dart';
 import 'package:online_shopping/models/bag_product.dart';
 
-import 'package:get/get.dart';
-
 class CartProducts extends StatelessWidget {
-  final CartController controller = Get.put(CartController());
+  final BagController controller = Get.put(BagController());
   CartProducts({Key? key}) : super(key: key);
 
   @override
@@ -37,7 +36,7 @@ class CartProducts extends StatelessWidget {
 }
 
 class CartProductCard extends StatefulWidget {
-  final CartController controller;
+  final BagController controller;
   final Product product;
   // final int quantity;
 
@@ -114,19 +113,27 @@ class _CartProductCardState extends State<CartProductCard> {
               ],
             ),
           ],
-        ),SizedBox(width: 15,),
+        ),
+        SizedBox(
+          width: 15,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: KDefaultPadding + 10),
           child: Text(
             "\$${widget.product.price}",
-            style: TextStyle(color: Colors.black, fontSize: 18,fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: KDefaultPadding + 10,left: KDefaultPadding + 5),
+          padding: const EdgeInsets.only(
+              top: KDefaultPadding + 10, left: KDefaultPadding + 5),
           child: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.delete,size: 25,),
+            icon: Icon(
+              Icons.delete,
+              size: 25,
+            ),
           ),
         )
       ],
