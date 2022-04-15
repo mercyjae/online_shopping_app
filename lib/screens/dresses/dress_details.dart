@@ -3,9 +3,9 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/controllers/dress_controller.dart';
 import 'package:online_shopping/models/dress_products.dart';
-import 'package:online_shopping/models/bag_product.dart';
 
 import '../cart_screen.dart';
 
@@ -118,6 +118,7 @@ class _DressDetailsState extends State<DressDetails> {
 
 class DressDetails1 extends StatelessWidget {
   final dressController = Get.put(DressController());
+  final cartController = Get.put(CartController());
 
   final DressProduct dressproduct;
   DressDetails1({Key? key, required this.dressproduct}) : super(key: key);
@@ -148,7 +149,7 @@ class DressDetails1 extends StatelessWidget {
             Row(
               children: [
                 ColorDot(
-                  colors:dressproduct.color,
+                  colors: dressproduct.color,
                   isSelected: true,
                 ),
                 SizedBox(
@@ -272,7 +273,8 @@ class DressDetails1 extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     onPressed: () {
-                       dressController.addToCart(dressproduct);
+                      dressController.addToCart(dressproduct);
+                      cartController.addDressItem(dressproduct);
                     },
                     child: Text(
                       "BUY NOW",
