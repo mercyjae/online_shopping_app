@@ -34,7 +34,6 @@ class CartController extends GetxController {
                 color: dressProduct.color,
               ));
     }
-    print(_cartItems);
     update();
   }
 
@@ -64,6 +63,11 @@ class CartController extends GetxController {
                 color: bagProduct.color,
               ));
     }
+    update();
+  }
+
+  void removeItem(int id) {
+    _cartItems.remove(id);
     update();
   }
 

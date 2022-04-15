@@ -107,7 +107,9 @@ class _CartScreenState extends State<CartScreen> {
                       padding: const EdgeInsets.only(
                           top: KDefaultPadding + 10, left: KDefaultPadding + 5),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          cartController.removeItem(_cartList[index].id);
+                        },
                         icon: Icon(
                           Icons.delete,
                           size: 25,
