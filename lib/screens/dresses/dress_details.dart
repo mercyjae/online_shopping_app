@@ -4,14 +4,11 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/controllers/dress_controller.dart';
 import 'package:online_shopping/models/dress_products.dart';
 
 import '../cart_screen.dart';
 
 class DressDetails extends StatefulWidget {
-  final dressController = Get.put(DressController());
-
   final DressProduct dressproduct;
   DressDetails({Key? key, required this.dressproduct}) : super(key: key);
   @override
@@ -117,12 +114,9 @@ class _DressDetailsState extends State<DressDetails> {
 }
 
 class DressDetails1 extends StatelessWidget {
-  final dressController = Get.put(DressController());
   final cartController = Get.put(CartController());
-
   final DressProduct dressproduct;
   DressDetails1({Key? key, required this.dressproduct}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -131,6 +125,7 @@ class DressDetails1 extends StatelessWidget {
       height: 400,
       decoration: BoxDecoration(
           color: Colors.white,
+
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(20), topLeft: Radius.circular(20))),
       child: Padding(
@@ -273,7 +268,7 @@ class DressDetails1 extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     onPressed: () {
-                      dressController.addToCart(dressproduct);
+                      //dressController.addToCart(dressproduct);
                       cartController.addDressItem(dressproduct);
                     },
                     child: Text(

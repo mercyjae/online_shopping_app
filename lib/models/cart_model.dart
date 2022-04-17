@@ -8,6 +8,7 @@ class CartModel {
   final int price;
   final String size;
   final Color color;
+  final int quantity;
 
   CartModel(
       {required this.id,
@@ -16,7 +17,8 @@ class CartModel {
       required this.description,
       required this.price,
       required this.size,
-      required this.color});
+      required this.color,
+        required this.quantity,});
 
   CartModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -25,7 +27,8 @@ class CartModel {
         description = json['description'],
         price = json['price'],
         size = json['size'],
-        color = Color(int.parse(json['color']));
+        color = Color(int.parse(json['color'])),
+  quantity = json["quantity"];
 
   Map<String, dynamic> toJson() {
     return {
@@ -35,7 +38,8 @@ class CartModel {
       'description': description,
       'price': price,
       'size': size,
-      'color': color.value.toString()
+      'color': color.value.toString(),
+      "quantity": quantity,
     };
   }
 }

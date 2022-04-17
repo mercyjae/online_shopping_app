@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/models/glasses_products.dart';
 import 'package:online_shopping/models/bag_product.dart';
+
+import '../cart_screen.dart';
 
 class EyeDetails extends StatefulWidget {
   final GlassProduct glassproduct;
@@ -42,7 +47,8 @@ class _EyeDetailsState extends State<EyeDetails> {
               Icons.add_shopping_cart_outlined,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () { Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CartScreen()));},
           ),
         ],
       ),
@@ -106,16 +112,11 @@ class _EyeDetailsState extends State<EyeDetails> {
   }
 }
 
-class EyeDetails1 extends StatefulWidget {
+class EyeDetails1 extends StatelessWidget {
+  final cartController = Get.put(CartController());
   final GlassProduct glassproduct;
-  const EyeDetails1({Key? key, required this.glassproduct}) : super(key: key);
+   EyeDetails1({Key? key, required this.glassproduct}) : super(key: key);
 
-  @override
-  State<EyeDetails1> createState() => _EyeDetails1State();
-}
-
-class _EyeDetails1State extends State<EyeDetails1> {
-  int items = 01;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -150,7 +151,7 @@ class _EyeDetails1State extends State<EyeDetails1> {
                     Row(
                       children: [
                         ColorDot(
-                          colors: widget.glassproduct.color,
+                          colors: glassproduct.color,
                           isSelected: true,
                         ),
                         SizedBox(
@@ -187,12 +188,12 @@ class _EyeDetails1State extends State<EyeDetails1> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 25.0),
-                  child: Text("${widget.glassproduct.size}"),
+                  child: Text("${glassproduct.size}"),
                 ),
               ],
             ),
             Text(
-              widget.glassproduct.title,
+              glassproduct.title,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(
@@ -203,16 +204,16 @@ class _EyeDetails1State extends State<EyeDetails1> {
                 IconSign(
                   icon1: Icons.remove,
                   press: () {
-                    setState(() {
-                      items++;
-                    });
+                    // setState(() {
+                    //   items++;
+                    // });
                   },
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Text(
-                  items.toString(),
+                Text("1",
+                  //items.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 SizedBox(
@@ -221,9 +222,9 @@ class _EyeDetails1State extends State<EyeDetails1> {
                 IconSign(
                   icon1: Icons.add,
                   press: () {
-                    setState(() {
-                      items--;
-                    });
+                    // setState(() {
+                    //   items--;
+                    // });
                   },
                 ),
                 Spacer(),
@@ -272,7 +273,9 @@ class _EyeDetails1State extends State<EyeDetails1> {
                     color: Colors.grey,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    onPressed: () {},
+                    onPressed: () {cartController.addGlass(glassproduct);
+
+                    },
                     child: Text(
                       "BUY NOW",
                       style: TextStyle(

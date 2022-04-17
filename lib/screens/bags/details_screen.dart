@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
-import 'package:online_shopping/controllers/bag_controller.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/models/bag_product.dart';
 import 'package:online_shopping/screens/cart_screen.dart';
 
 class DetailsScreen extends StatefulWidget {
-  final cartController = Get.put(BagController());
   final Product product;
-  //final int index;
   DetailsScreen({
     Key? key,
     required this.product,
@@ -120,7 +117,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 }
 
 class DetailsScreen1 extends StatelessWidget {
-  final bagController = Get.put(BagController());
+
   final cartController = Get.put(CartController());
   final Product product;
   // final int index;
@@ -286,8 +283,9 @@ class DetailsScreen1 extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     onPressed: () {
-                      bagController.addToCart(product);
+                     // bagController.addToCart(product);
                       cartController.addBagItem(product);
+
                     },
                     child: Text(
                       "BUY NOW",

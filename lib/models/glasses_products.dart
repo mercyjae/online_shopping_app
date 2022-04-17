@@ -7,6 +7,7 @@ class GlassProduct{
   final String size;
   final int id;
   final Color color;
+  final int quantity;
   GlassProduct({
     required this.image,
     required this.title,
@@ -15,6 +16,7 @@ class GlassProduct{
     required this.size,
     required  this.id,
     required this.color,
+    required this.quantity
   });
 }
 List<GlassProduct> eyeglass =[
@@ -25,7 +27,7 @@ List<GlassProduct> eyeglass =[
       size: "20cm",
       price: 35 ,
       color: Color(0xFFE6B398),
-      image: "assets/images/eyeglass 1.png"
+      image: "assets/images/eyeglass 1.png", quantity: 1
   ),
   GlassProduct(
       id: 2,
@@ -34,7 +36,7 @@ List<GlassProduct> eyeglass =[
       size: "30cm",
       price: 45,
       color: Colors.blueGrey,
-      image: "assets/images/eyeglass 2.png"
+      image: "assets/images/eyeglass 2.png",quantity: 1
   ),
   GlassProduct(
       id: 3,
@@ -43,7 +45,7 @@ List<GlassProduct> eyeglass =[
       size: "30cm",
       price: 40,
       color:   Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 3.png"
+      image: "assets/images/eyeglass 3.png",quantity: 1
   ),
   GlassProduct(
       id: 4,
@@ -52,7 +54,7 @@ List<GlassProduct> eyeglass =[
       size: "28cm",
       price: 35,
       color: Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 4.png"
+      image: "assets/images/eyeglass 4.png",quantity: 1
   ),
   GlassProduct(
       id: 5,
@@ -61,7 +63,7 @@ List<GlassProduct> eyeglass =[
       size: "25cm",
       price: 30,
       color:  Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 5.png"
+      image: "assets/images/eyeglass 5.png",quantity: 1
   ),
   GlassProduct(
       id: 6,
@@ -70,6 +72,6 @@ List<GlassProduct> eyeglass =[
       size: "22cm",
       price: 28,
       color: Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 6.png"
+      image: "assets/images/eyeglass 6.png",quantity: 1
   ),
 ];

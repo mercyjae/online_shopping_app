@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/models/bag_product.dart';
 import 'package:online_shopping/screens/bags/details_screen.dart';
 
 class BagScreen extends StatefulWidget {
   const BagScreen({Key? key}) : super(key: key);
-
   @override
   State<BagScreen> createState() => _BagScreenState();
 }
-
 class _BagScreenState extends State<BagScreen> {
   @override
   Widget build(BuildContext context) {

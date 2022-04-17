@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/models/dress_products.dart';
 import 'package:online_shopping/models/shoes_product.dart';
 import 'package:online_shopping/models/bag_product.dart';
 import 'package:online_shopping/screens/dresses/dress_details.dart';
 
+import '../cart_screen.dart';
+
 class ShoeDetailsScreen extends StatefulWidget {
+  final cartController = Get.put(CartController());
   final ShoesProduct shoesproduct;
-  const ShoeDetailsScreen({Key? key, required this.shoesproduct})
+   ShoeDetailsScreen({Key? key, required this.shoesproduct})
       : super(key: key);
 
   @override
@@ -46,7 +52,8 @@ class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
               Icons.add_shopping_cart_outlined,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () { Navigator.push(context,
+                MaterialPageRoute(builder: (context) => CartScreen()));},
           ),
         ],
       ),
@@ -110,17 +117,13 @@ class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
   }
 }
 
-class ShoesDetails1 extends StatefulWidget {
+class ShoesDetails1 extends StatelessWidget {
+  final cartController = Get.put(CartController());
   final ShoesProduct shoesproduct;
-  const ShoesDetails1({Key? key, required this.shoesproduct}) : super(key: key);
+   ShoesDetails1({Key? key, required this.shoesproduct}) : super(key: key);
 
   @override
-  State<ShoesDetails1> createState() => _ShoesDetails1State();
-}
 
-class _ShoesDetails1State extends State<ShoesDetails1> {
-  int items = 01;
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
@@ -146,7 +149,7 @@ class _ShoesDetails1State extends State<ShoesDetails1> {
             Row(
               children: [
                 ColorDot(
-                  colors: widget.shoesproduct.color,
+                  colors: shoesproduct.color,
                   isSelected: true,
                 ),
                 SizedBox(
@@ -179,7 +182,7 @@ class _ShoesDetails1State extends State<ShoesDetails1> {
                         height: KDefaultPadding / 2,
                       ),
                       Text(
-                        "${widget.shoesproduct.size}",
+                        "${shoesproduct.size}",
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       )
@@ -188,8 +191,7 @@ class _ShoesDetails1State extends State<ShoesDetails1> {
                 )
               ],
             ),
-            Text(
-              widget.shoesproduct.title,
+            Text(shoesproduct.title,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(
@@ -200,16 +202,16 @@ class _ShoesDetails1State extends State<ShoesDetails1> {
                 IconSign(
                   icon1: Icons.remove,
                   press: () {
-                    setState(() {
-                      items++;
-                    });
+                    // setState(() {
+                    //   items++;
+                    // });
                   },
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Text(
-                  items.toString(),
+                Text("1",
+                  //items.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 SizedBox(
@@ -218,9 +220,9 @@ class _ShoesDetails1State extends State<ShoesDetails1> {
                 IconSign(
                   icon1: Icons.add,
                   press: () {
-                    setState(() {
-                      items--;
-                    });
+                    // setState(() {
+                    //   items--;
+                    // });
                   },
                 ),
                 Spacer(),
@@ -269,7 +271,9 @@ class _ShoesDetails1State extends State<ShoesDetails1> {
                     color: Colors.grey,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
-                    onPressed: () {},
+                    onPressed: () {
+                      cartController.addShoes(shoesproduct);
+                    },
                     child: Text(
                       "BUY NOW",
                       style: TextStyle(

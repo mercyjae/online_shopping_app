@@ -19,109 +19,119 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         title: Text("Cart"),
       ),
-      body: GetBuilder<CartController>(
-        builder: (cartController) {
-          var _cartList = cartController.getItems;
-          return ListView.builder(
-            itemCount: _cartList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: KDefaultPadding / 2),
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 6),
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            color: _cartList[index].color,
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Image.asset(_cartList[index].image),
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: KDefaultPadding - 5),
-                          child: Text(
-                            _cartList[index].title,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
+      body: Column(
+        children: [
+          Expanded(
+            child: GetBuilder<CartController>(
+              builder: (cartController) {
+                var _cartList = cartController.getItems;
+                return ListView.builder(
+                  itemCount: _cartList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: KDefaultPadding / 2),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(horizontal: 6),
+                              height: 80,
+                              width: 80,
+                              decoration: BoxDecoration(
+                                  color: _cartList[index].color,
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Image.asset(_cartList[index].image),
+                            ),
                           ),
-                        ),
-                        //SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            IconSign(
-                              icon1: Icons.remove,
-                              press: () {
-                                // setState(() {
-                                //   items++;
-                                // });
-                              },
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              "1",
-                              //items.toString(),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: KDefaultPadding - 5),
+                                child: Text(
+                                  _cartList[index].title,
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              //SizedBox(height: 10,),
+                              Row(
+                                children: [
+                                  IconSign(
+                                    icon1: Icons.remove,
+                                    press: () {
+                                      cartController.setQuantity(false);
+                                    },
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "${cartController.quantity}",
+                                    //items.toString(),
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold, fontSize: 20),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  IconSign(
+                                    icon1: Icons.add,
+                                    press: () {
+                                      cartController.setQuantity(true);
+
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: KDefaultPadding + 10),
+                            child: Text(
+                              "\$${_cartList[index].price}",
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 20),
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            IconSign(
-                              icon1: Icons.add,
-                              press: () {
-                                // setState(() {
-                                //   items--;
-                                // });
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: KDefaultPadding + 10, left: KDefaultPadding + 5),
+                            child: IconButton(
+                              onPressed: () {
+                                cartController.removeItem(_cartList[index].id);
                               },
+                              icon: Icon(
+                                Icons.delete,
+                                size: 25,
+                              ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: KDefaultPadding + 10),
-                      child: Text(
-                        "\$${_cartList[index].price}",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: KDefaultPadding + 10, left: KDefaultPadding + 5),
-                      child: IconButton(
-                        onPressed: () {
-                          cartController.removeItem(_cartList[index].id);
-                        },
-                        icon: Icon(
-                          Icons.delete,
-                          size: 25,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            },
-          );
-        },
+                    );
+                  },
+                );
+              },
+            ),
+          ),Row(
+            children: [
+              Text("Total Price",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),
+              Text("Total Price",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),
+            ],
+          ),
+          //SizedBox(height: 100,),
+
+        ],
       ),
     );
   }
