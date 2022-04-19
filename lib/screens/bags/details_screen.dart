@@ -117,7 +117,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
 }
 
 class DetailsScreen1 extends StatelessWidget {
-
   final cartController = Get.put(CartController());
   final Product product;
   // final int index;
@@ -217,24 +216,21 @@ class DetailsScreen1 extends StatelessWidget {
               children: [
                 IconSign(
                   icon1: Icons.remove,
-                  press: () {
-                    // numOfItems2();
-                  },
+                  press: () {},
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                // Text(items.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
+                Text(
+                  '\$${cartController.quantity}',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
                 SizedBox(
                   width: 10,
                 ),
                 IconSign(
                   icon1: Icons.add,
-                  press: () {
-                    // setState(() {
-                    //   numOfItems1();
-                    // });
-                  },
+                  press: () {},
                 ),
                 Spacer(),
                 Container(
@@ -283,9 +279,8 @@ class DetailsScreen1 extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     onPressed: () {
-                     // bagController.addToCart(product);
+                      // bagController.addToCart(product);
                       cartController.addBagItem(product);
-
                     },
                     child: Text(
                       "BUY NOW",

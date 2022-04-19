@@ -25,6 +25,7 @@ class _CartScreenState extends State<CartScreen> {
             child: GetBuilder<CartController>(
               builder: (cartController) {
                 var _cartList = cartController.getItems;
+
                 return ListView.builder(
                   itemCount: _cartList.length,
                   itemBuilder: (context, index) {
@@ -49,7 +50,8 @@ class _CartScreenState extends State<CartScreen> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 5, horizontal: KDefaultPadding - 5),
+                                    vertical: 5,
+                                    horizontal: KDefaultPadding - 5),
                                 child: Text(
                                   _cartList[index].title,
                                   style: TextStyle(
@@ -64,17 +66,19 @@ class _CartScreenState extends State<CartScreen> {
                                   IconSign(
                                     icon1: Icons.remove,
                                     press: () {
-                                      cartController.setQuantity(false);
+                                      cartController.addDressItem(
+                                          _cartList[index].dressProduct!, -1);
                                     },
                                   ),
                                   SizedBox(
                                     width: 10,
                                   ),
                                   Text(
-                                    "${cartController.quantity}",
+                                    "${_cartList[index].quantity}",
                                     //items.toString(),
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 20),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
                                   ),
                                   SizedBox(
                                     width: 10,
@@ -82,8 +86,8 @@ class _CartScreenState extends State<CartScreen> {
                                   IconSign(
                                     icon1: Icons.add,
                                     press: () {
-                                      cartController.setQuantity(true);
-
+                                      cartController.addDressItem(
+                                          _cartList[index].dressProduct!, 1);
                                     },
                                   ),
                                 ],
@@ -94,9 +98,10 @@ class _CartScreenState extends State<CartScreen> {
                             width: 15,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: KDefaultPadding + 10),
+                            padding: const EdgeInsets.only(
+                                top: KDefaultPadding + 10),
                             child: Text(
-                              "\$${_cartList[index].price}",
+                              "\$${_cartList[index].price * _cartList[index].quantity}",
                               style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 18,
@@ -105,7 +110,8 @@ class _CartScreenState extends State<CartScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: KDefaultPadding + 10, left: KDefaultPadding + 5),
+                                top: KDefaultPadding + 10,
+                                left: KDefaultPadding + 5),
                             child: IconButton(
                               onPressed: () {
                                 cartController.removeItem(_cartList[index].id);
@@ -123,14 +129,26 @@ class _CartScreenState extends State<CartScreen> {
                 );
               },
             ),
-          ),Row(
+          ),
+          Row(
             children: [
-              Text("Total Price",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),
-              Text("Total Price",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),
+              Text(
+                "Total Price",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black),
+              ),
+              Text(
+                "Total Price",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black),
+              ),
             ],
           ),
           //SizedBox(height: 100,),
-
         ],
       ),
     );
