@@ -4,18 +4,14 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/models/dress_products.dart';
 import 'package:online_shopping/models/shoes_product.dart';
-import 'package:online_shopping/models/bag_product.dart';
-import 'package:online_shopping/screens/dresses/dress_details.dart';
 
 import '../cart_screen.dart';
 
 class ShoeDetailsScreen extends StatefulWidget {
   final cartController = Get.put(CartController());
   final ShoesProduct shoesproduct;
-   ShoeDetailsScreen({Key? key, required this.shoesproduct})
-      : super(key: key);
+  ShoeDetailsScreen({Key? key, required this.shoesproduct}) : super(key: key);
 
   @override
   State<ShoeDetailsScreen> createState() => _ShoeDetailsScreenState();
@@ -52,8 +48,10 @@ class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
               Icons.add_shopping_cart_outlined,
               color: Colors.white,
             ),
-            onPressed: () { Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CartScreen()));},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartScreen()));
+            },
           ),
         ],
       ),
@@ -120,10 +118,9 @@ class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
 class ShoesDetails1 extends StatelessWidget {
   final cartController = Get.put(CartController());
   final ShoesProduct shoesproduct;
-   ShoesDetails1({Key? key, required this.shoesproduct}) : super(key: key);
+  ShoesDetails1({Key? key, required this.shoesproduct}) : super(key: key);
 
   @override
-
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
@@ -191,7 +188,8 @@ class ShoesDetails1 extends StatelessWidget {
                 )
               ],
             ),
-            Text(shoesproduct.title,
+            Text(
+              shoesproduct.title,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             SizedBox(
@@ -201,16 +199,13 @@ class ShoesDetails1 extends StatelessWidget {
               children: [
                 IconSign(
                   icon1: Icons.remove,
-                  press: () {
-                    // setState(() {
-                    //   items++;
-                    // });
-                  },
+                  press: () {},
                 ),
                 SizedBox(
                   width: 10,
                 ),
-                Text("1",
+                Text(
+                  "\$${cartController.quantity}",
                   //items.toString(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
@@ -219,11 +214,7 @@ class ShoesDetails1 extends StatelessWidget {
                 ),
                 IconSign(
                   icon1: Icons.add,
-                  press: () {
-                    // setState(() {
-                    //   items--;
-                    // });
-                  },
+                  press: () {},
                 ),
                 Spacer(),
                 Container(

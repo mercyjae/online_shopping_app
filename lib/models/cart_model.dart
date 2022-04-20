@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:online_shopping/models/dress_products.dart';
+
 class CartModel {
   final int id;
   final String image;
@@ -8,17 +10,20 @@ class CartModel {
   final int price;
   final String size;
   final Color color;
-  final int quantity;
+  late final int quantity;
+  DressProduct? dressProduct;
 
-  CartModel(
-      {required this.id,
-      required this.image,
-      required this.title,
-      required this.description,
-      required this.price,
-      required this.size,
-      required this.color,
-        required this.quantity,});
+  CartModel({
+    required this.id,
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.price,
+    required this.size,
+    required this.color,
+    required this.quantity,
+    this.dressProduct,
+  });
 
   CartModel.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -28,7 +33,8 @@ class CartModel {
         price = json['price'],
         size = json['size'],
         color = Color(int.parse(json['color'])),
-  quantity = json["quantity"];
+        quantity = json["quantity"],
+        dressProduct = DressProduct.fromJson(json['dressProduct']);
 
   Map<String, dynamic> toJson() {
     return {
@@ -40,6 +46,7 @@ class CartModel {
       'size': size,
       'color': color.value.toString(),
       "quantity": quantity,
+      'dressProduct': dressProduct?.toJson(),
     };
   }
 }
