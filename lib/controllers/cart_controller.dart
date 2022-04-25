@@ -11,10 +11,11 @@ class CartController extends GetxController {
 
   int quantity = 0;
   int totalPrice = 0;
-
-  void addShoes(ShoesProduct shoesProduct) {
+  var totalQuantity = 0;
+  void addShoesItem(ShoesProduct shoesProduct, int quantity) {
     if (_cartItems.containsKey(shoesProduct.id)) {
       _cartItems.update(shoesProduct.id, (value) {
+        totalQuantity = value.quantity + quantity;
         return CartModel(
             id: value.id,
             image: value.image,
@@ -23,9 +24,14 @@ class CartController extends GetxController {
             price: value.price,
             size: value.size,
             color: value.color,
-            quantity: value.quantity + quantity);
+            quantity: value.quantity + quantity,
+        shoesProduct:  shoesProduct);
       });
+      if (totalQuantity <= 0) {
+        _cartItems.remove(shoesProduct.id);
+      }
     } else {
+      if (quantity > 0){
       _cartItems.putIfAbsent(
           shoesProduct.id,
           () => CartModel(
@@ -37,15 +43,16 @@ class CartController extends GetxController {
                 size: shoesProduct.size,
                 color: shoesProduct.color,
                 quantity: quantity,
+            shoesProduct: shoesProduct
               ));
-    }
+    }}
     update();
   }
 
   void addDressItem(DressProduct dressProduct, int quantity) {
     //create a total quantity variable to track the current quantity for a dress item
     //that's for the an item which already exist in the cart.
-    var totalQuantity = 0;
+
     if (_cartItems.containsKey(dressProduct.id)) {
       _cartItems.update(dressProduct.id, (value) {
         //set the total quantity to the current quantity of the dress item
@@ -89,9 +96,10 @@ class CartController extends GetxController {
     update();
   }
 
-  void addBagItem(Product bagProduct) {
+  void addBagItem(Product bagProduct, int quantity) {
     if (_cartItems.containsKey(bagProduct.id)) {
       _cartItems.update(bagProduct.id, (value) {
+        totalQuantity = value.quantity + quantity;
         return CartModel(
             id: value.id,
             title: value.title,
@@ -100,9 +108,14 @@ class CartController extends GetxController {
             description: value.description,
             size: value.size,
             color: value.color,
-            quantity: value.quantity);
+            quantity: value.quantity + quantity,
+        bagProduct: bagProduct);
       });
+      if(totalQuantity <= 0){
+        _cartItems.remove(bagProduct.id);
+      }
     } else {
+      if(quantity > 0){
       _cartItems.putIfAbsent(
           bagProduct.id,
           () => CartModel(
@@ -113,14 +126,18 @@ class CartController extends GetxController {
               description: bagProduct.description,
               size: bagProduct.size,
               color: bagProduct.color,
-              quantity: bagProduct.quantity));
-    }
+              quantity:quantity,
+            bagProduct: bagProduct,
+
+          ));
+    }}
     update();
   }
 
-  void addGlass(GlassProduct glassProduct) {
+  void addGlassItem(GlassProduct glassProduct,int quantity) {
     if (_cartItems.containsKey(glassProduct.id)) {
       _cartItems.update(glassProduct.id, (value) {
+        totalQuantity = value.quantity + quantity;
         return CartModel(
             id: value.id,
             title: value.title,
@@ -129,9 +146,14 @@ class CartController extends GetxController {
             description: value.description,
             size: value.size,
             color: value.color,
-            quantity: value.quantity);
+            quantity: value.quantity,
+        glassProduct: glassProduct);
       });
+      if (totalQuantity <= 0) {
+        _cartItems.remove(glassProduct.id);
+      }
     } else {
+      if(quantity > 0){
       _cartItems.putIfAbsent(
           glassProduct.id,
           () => CartModel(
@@ -142,8 +164,9 @@ class CartController extends GetxController {
               description: glassProduct.description,
               size: glassProduct.size,
               color: glassProduct.color,
-              quantity: glassProduct.quantity));
-    }
+              quantity:quantity,
+          glassProduct: glassProduct));
+    }}
     update();
   }
 
@@ -164,6 +187,38 @@ class CartController extends GetxController {
     }
     return quantity;
   }
+  int getBagQuantity(Product bagProduct){
+    var quantity = 0;
+    if(_cartItems.containsKey(bagProduct.id)){
+      _cartItems.forEach((key, value) {
+        if(key == bagProduct.id){
+          quantity = value.quantity;
+        }
+      });
+    }return quantity;
+  }
+  int getShoesQuantity(ShoesProduct shoesProduct){
+    var quantity = 0;
+    if(_cartItems.containsKey(shoesProduct.id)){
+      _cartItems.forEach((key, value) {
+        if(key == shoesProduct.id){
+          quantity = value.quantity;
+        }
+      });
+
+    }
+    return quantity;
+  }
+  int getGlassQuantity(GlassProduct glassProduct){
+    var quantity = 0;
+    if(_cartItems.containsKey(glassProduct.id)){
+      _cartItems.forEach((key, value) {
+        if(key == glassProduct.id){
+          quantity = value.quantity;
+        }
+      });
+    } return quantity;
+  }
 
   //checks if a dress item already exists in the cart
   bool isDressItemInCart(DressProduct dressProduct) {
@@ -172,6 +227,30 @@ class CartController extends GetxController {
     }
     return false;
   }
+  bool isBagItemInCart(Product bagProduct){
+    if(_cartItems.containsKey(bagProduct.id)){
+      return true;
+    }else{
+      return false;
+    }
+
+  }
+bool isGlassItemInCart(GlassProduct glassProduct){
+    if(_cartItems.containsKey(glassProduct.id)){
+      return true;
+    }
+    return false;
+}
+
+
+
+bool isShoesInCart(ShoesProduct shoesProduct){
+    if(_cartItems.containsKey(shoesProduct.id)){
+      return true;
+    }
+    return false;
+}
+
 
   List<CartModel> get getItems {
     return _cartItems.entries.map((e) => e.value).toList();

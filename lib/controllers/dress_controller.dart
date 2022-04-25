@@ -5,7 +5,6 @@ import 'package:online_shopping/models/dress_products.dart';
 class DressController extends GetxController {
   //declare a late variable for the cart controller
   late CartController _cartController;
-
   int _quantity = 0;
   int get quantity => _quantity;
   int _retrieveDressQuantityInCart = 0;
@@ -56,7 +55,6 @@ class DressController extends GetxController {
 
   void addDressItem(DressProduct dressProduct) {
     _cartController.addDressItem(dressProduct, _quantity);
-
     _quantity = 0;
     //retrieve the quantity of the dress item in the cart
     _retrieveDressQuantityInCart =

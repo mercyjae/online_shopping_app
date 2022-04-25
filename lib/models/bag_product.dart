@@ -18,6 +18,26 @@ class Product {
       required this.size,
       required this.color,
       required this.quantity});
+  Product.fromJson(Map<String, dynamic> json)
+      : image = json['image'],
+        title = json['title'],
+        description = json['description'],
+        price = json['price'],
+        size = json['size'],
+        id = json['id'],
+        color = Color(json['color']),
+        quantity = json['quantity'];
+
+  Map<String, dynamic> toJson() => {
+    'image': image,
+    'title': title,
+    'description': description,
+    'price': price,
+    'size': size,
+    'id': id,
+    'color': color.value,
+    'quantity': quantity,
+  };
 }
 
 List<Product> products = [
@@ -28,7 +48,7 @@ List<Product> products = [
     size: "18cm",
     price: 45,
     color: Color(0xFF3D82AE),
-    image: "assets/images/bag_1.png", quantity: 1,
+    image: "assets/images/bag_1.png", quantity: 0,
   ),
   Product(
       id: 8,
@@ -37,7 +57,7 @@ List<Product> products = [
       size: "13cm",
       price: 30,
       color: Color(0xFFFB7883),
-      image: "assets/images/bag_5.png",quantity: 1,),
+      image: "assets/images/bag_5.png",quantity: 0,),
   Product(
       id: 9,
       title: "Tote ",
@@ -45,7 +65,7 @@ List<Product> products = [
       size: "12cm",
       price: 28,
       color: Color(0xFFebc034),
-      image: "assets/images/bag3.png",quantity: 1,),
+      image: "assets/images/bag3.png",quantity: 0,),
   Product(
       id: 10,
       title: "Gucci",
@@ -53,7 +73,7 @@ List<Product> products = [
       size: "12cm",
       price: 30,
       color: Colors.black12,
-      image: "assets/images/bag4.png",quantity: 1,),
+      image: "assets/images/bag4.png",quantity: 0,),
   Product(
       id: 11,
       title: "Pink Alligator",
@@ -61,7 +81,7 @@ List<Product> products = [
       size: "15cm",
       price: 35,
       color: Color(0xFFD3A984),
-      image: "assets/images/bag7.png",quantity: 1,),
+      image: "assets/images/bag7.png",quantity: 0,),
   Product(
       id: 12,
       title: "Pranda",
@@ -69,5 +89,5 @@ List<Product> products = [
       size: "10cm",
       price: 38,
       color: Color(0xFFf54242),
-      image: "assets/images/bag6.png",quantity: 1,),
+      image: "assets/images/bag6.png",quantity: 0,),
 ];

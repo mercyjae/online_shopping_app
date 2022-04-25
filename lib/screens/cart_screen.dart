@@ -66,8 +66,13 @@ class _CartScreenState extends State<CartScreen> {
                                   IconSign(
                                     icon1: Icons.remove,
                                     press: () {
+                                      cartController.addGlassItem(_cartList[index].glassProduct!, -1);
+                                      cartController.addShoesItem(_cartList[index].shoesProduct!, -1);
+                                      cartController.addBagItem(_cartList[index].bagProduct!,-1);
                                       cartController.addDressItem(
                                           _cartList[index].dressProduct!, -1);
+
+
                                     },
                                   ),
                                   SizedBox(
@@ -86,8 +91,10 @@ class _CartScreenState extends State<CartScreen> {
                                   IconSign(
                                     icon1: Icons.add,
                                     press: () {
-                                      cartController.addDressItem(
-                                          _cartList[index].dressProduct!, 1);
+                                      cartController.addGlassItem(_cartList[index].glassProduct!, 1);
+                                      cartController.addShoesItem(_cartList[index].shoesProduct!, 1);
+                                      cartController.addBagItem(_cartList[index].bagProduct!, 1);
+                                      cartController.addDressItem(_cartList[index].dressProduct!, 1);
                                     },
                                   ),
                                 ],

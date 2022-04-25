@@ -7,7 +7,6 @@ import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/controllers/dress_controller.dart';
 import 'package:online_shopping/models/dress_products.dart';
-
 import '../cart_screen.dart';
 
 class DressDetails extends StatefulWidget {

@@ -18,6 +18,27 @@ class GlassProduct{
     required this.color,
     required this.quantity
   });
+
+  GlassProduct.fromJson(Map<String, dynamic> json)
+      : image = json['image'],
+        title = json['title'],
+        description = json['description'],
+        price = json['price'],
+        size = json['size'],
+        id = json['id'],
+        color = Color(json['color']),
+        quantity = json['quantity'];
+
+  Map<String, dynamic> toJson() => {
+    'image': image,
+    'title': title,
+    'description': description,
+    'price': price,
+    'size': size,
+    'id': id,
+    'color': color.value,
+    'quantity': quantity,
+  };
 }
 List<GlassProduct> eyeglass =[
   GlassProduct(
@@ -27,7 +48,7 @@ List<GlassProduct> eyeglass =[
       size: "20cm",
       price: 35 ,
       color: Color(0xFFE6B398),
-      image: "assets/images/eyeglass 1.png", quantity: 1
+      image: "assets/images/eyeglass 1.png", quantity: 0
   ),
   GlassProduct(
       id: 2,
@@ -36,7 +57,7 @@ List<GlassProduct> eyeglass =[
       size: "30cm",
       price: 45,
       color: Colors.blueGrey,
-      image: "assets/images/eyeglass 2.png",quantity: 1
+      image: "assets/images/eyeglass 2.png",quantity: 0
   ),
   GlassProduct(
       id: 3,
@@ -45,7 +66,7 @@ List<GlassProduct> eyeglass =[
       size: "30cm",
       price: 40,
       color:   Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 3.png",quantity: 1
+      image: "assets/images/eyeglass 3.png",quantity: 0
   ),
   GlassProduct(
       id: 4,
@@ -54,7 +75,7 @@ List<GlassProduct> eyeglass =[
       size: "28cm",
       price: 35,
       color: Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 4.png",quantity: 1
+      image: "assets/images/eyeglass 4.png",quantity: 0
   ),
   GlassProduct(
       id: 5,
@@ -63,7 +84,7 @@ List<GlassProduct> eyeglass =[
       size: "25cm",
       price: 30,
       color:  Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 5.png",quantity: 1
+      image: "assets/images/eyeglass 5.png",quantity: 0
   ),
   GlassProduct(
       id: 6,
@@ -72,6 +93,6 @@ List<GlassProduct> eyeglass =[
       size: "22cm",
       price: 28,
       color: Color(0xFFAEAEAE),
-      image: "assets/images/eyeglass 6.png",quantity: 1
+      image: "assets/images/eyeglass 6.png",quantity: 0
   ),
 ];
