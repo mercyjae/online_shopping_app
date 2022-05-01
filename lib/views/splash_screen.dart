@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:online_shopping/constants.dart';
-import 'package:online_shopping/screens/login.dart';
+
+import 'login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -32,8 +32,8 @@ class _SplashScreenState extends State<SplashScreen> {
      Container(width: 200,height: 70,
        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),color: Colors.amberAccent),
        child: Center(
-         child: Text("Explore the newest\n    Collections",
-           style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),
+         child: Text("Let's improve your appearance",
+           style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,),
            textAlign: TextAlign.center,),
        ),
      ),

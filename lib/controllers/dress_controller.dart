@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/models/dress_products.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
+
 
 class DressController extends GetxController {
   //declare a late variable for the cart controller
@@ -14,8 +15,10 @@ class DressController extends GetxController {
   void setQuantity(bool isIncrement) {
     if (isIncrement) {
       _quantity = checkQuantity(_quantity + 1);
+      print("increment : ${_quantity}");
     } else {
       _quantity = checkQuantity(_quantity - 1);
+      print("decrement : ${_quantity}");
     }
     update();
   }
@@ -39,7 +42,7 @@ class DressController extends GetxController {
   //also initialize the cart controller to be used to retrieve the quantity of the dress in the cart
   //and also check if a dress already exist in the cart
   void initDressProduct(
-      DressProduct dressProduct, CartController cartController) {
+      Product dressProduct, CartController cartController) {
     _quantity = 0;
     _cartController = cartController;
     //now let's handle the case for when a dress product already exists in the cart
@@ -53,8 +56,8 @@ class DressController extends GetxController {
     }
   }
 
-  void addDressItem(DressProduct dressProduct) {
-    _cartController.addDressItem(dressProduct, _quantity);
+  void addDressItem(Product dressProduct) {
+    _cartController.addItem(dressProduct, _quantity);
     _quantity = 0;
     //retrieve the quantity of the dress item in the cart
     _retrieveDressQuantityInCart =

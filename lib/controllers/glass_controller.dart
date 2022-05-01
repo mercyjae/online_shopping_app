@@ -1,6 +1,6 @@
  import 'package:get/get.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/models/glasses_products.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 
 class GlassController extends GetxController{
   late CartController _cartController;
@@ -27,7 +27,7 @@ class GlassController extends GetxController{
    return quantity;
   }
 
-  void initGlassProduct(GlassProduct glassProduct, CartController cartController){
+  void initGlassProduct(Product glassProduct, CartController cartController){
     _quantity = 0;
     _cartController = cartController;
     var exist = false;
@@ -37,8 +37,8 @@ class GlassController extends GetxController{
     }
 
   }
-  void addGlassItem(GlassProduct glassProduct) {
-    _cartController.addGlassItem(glassProduct, _quantity);
+  void addGlassItem(Product glassProduct) {
+    _cartController.addItem(glassProduct, _quantity);
     _quantity = 0;
     //retrieve the quantity of the dress item in the cart
     _retrieveGlassQuantityInCart =

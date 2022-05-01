@@ -5,27 +5,27 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/controllers/glass_controller.dart';
-import 'package:online_shopping/models/glasses_products.dart';
-import 'package:online_shopping/models/bag_product.dart';
+import 'package:online_shopping/controllers/shoes_controller.dart';import 'package:online_shopping/views_model/bag_product.dart';
 
 import '../cart_screen.dart';
 
-class EyeDetails extends StatefulWidget {
-  final GlassProduct glassproduct;
-  const EyeDetails({Key? key, required this.glassproduct}) : super(key: key);
+class ShoeDetailsScreen extends StatefulWidget {
+  final cartController = Get.put(CartController());
+  final Product shoesproduct;
+  ShoeDetailsScreen({Key? key, required this.shoesproduct}) : super(key: key);
 
   @override
-  State<EyeDetails> createState() => _EyeDetailsState();
+  State<ShoeDetailsScreen> createState() => _ShoeDetailsScreenState();
 }
 
-class _EyeDetailsState extends State<EyeDetails> {
+class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: widget.glassproduct.color,
+      backgroundColor: widget.shoesproduct.color,
       appBar: AppBar(
-        backgroundColor: widget.glassproduct.color,
+        backgroundColor: widget.shoesproduct.color,
         elevation: 0,
         leading: IconButton(
           icon: Icon(
@@ -49,29 +49,31 @@ class _EyeDetailsState extends State<EyeDetails> {
               Icons.add_shopping_cart_outlined,
               color: Colors.white,
             ),
-            onPressed: () { Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CartScreen()));},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => CartScreen()));
+            },
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            EyeDetails1(
-              glassproduct: widget.glassproduct,
+            ShoesDetails1(
+              shoesproduct: widget.shoesproduct,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(widget.glassproduct.title,
+                  Text(widget.shoesproduct.title,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25,
                           fontWeight: FontWeight.bold)),
                   Text(
-                    widget.glassproduct.description,
+                    widget.shoesproduct.description,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
@@ -88,7 +90,7 @@ class _EyeDetailsState extends State<EyeDetails> {
                             text: "Price\n",
                             style: TextStyle(color: Colors.white)),
                         TextSpan(
-                            text: "\$234",
+                            text: "\$${widget.shoesproduct.price}",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -101,10 +103,10 @@ class _EyeDetailsState extends State<EyeDetails> {
             ),
             Positioned(
                 bottom: 350,
-                left: 50,
+                left: 80,
                 right: 0,
                 child: Image.asset(
-                  widget.glassproduct.image,
+                  widget.shoesproduct.image,
                   width: 200,
                 )),
           ],
@@ -114,18 +116,18 @@ class _EyeDetailsState extends State<EyeDetails> {
   }
 }
 
-class EyeDetails1 extends StatelessWidget {
+class ShoesDetails1 extends StatelessWidget {
   final cartController = Get.put(CartController());
-  final GlassProduct glassproduct;
-   EyeDetails1({Key? key, required this.glassproduct}) : super(key: key);
+  final Product shoesproduct;
+  ShoesDetails1({Key? key, required this.shoesproduct}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    Get.put(GlassController());
-    Get.find<GlassController>().initGlassProduct(glassproduct, Get.find<CartController>());
-    return GetBuilder<GlassController>(
-      builder: (glassController) {
+    Get.put(ShoesController());
+    Get.find<ShoesController>().initShoeProduct(shoesproduct, Get.find<CartController>());
+    return GetBuilder<ShoesController>(
+      builder: (shoesController) {
         return Container(
           margin: EdgeInsets.only(top: size.height * 0.3),
           height: 400,
@@ -141,65 +143,58 @@ class EyeDetails1 extends StatelessWidget {
                 SizedBox(
                   height: 150,
                 ),
+                Text(
+                  "Color",
+                  style:
+                      TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
+                ),
                 Row(
                   children: [
-                    Column(
-                      crossAxisAlignment:CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Color",
-                          style: TextStyle(
-                              color: Colors.black45, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            ColorDot(
-                              colors: glassproduct.color,
-                              isSelected: true,
-                            ),
-                            SizedBox(
-                              width: KDefaultPadding / 2,
-                            ),
-                            ColorDot(
-                              colors: Colors.black12,
-                              isSelected: true,
-                            ),
-                            SizedBox(
-                              width: KDefaultPadding / 2,
-                            ),
-                            ColorDot(
-                              colors: Colors.grey,
-                              isSelected: true,
-                            ),
-                            SizedBox(
-                              width: 70,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 30.0, left: 20),
-                      child: Text(
-                        "Size",
-                        style: TextStyle(
-                            color: Colors.black45, fontWeight: FontWeight.bold),
-                      ),
+                    ColorDot(
+                      colors: shoesproduct.color,
+                      isSelected: true,
                     ),
                     SizedBox(
-                      height: 50,
+                      width: KDefaultPadding / 2,
+                    ),
+                    ColorDot(
+                      colors: Colors.green,
+                      isSelected: true,
+                    ),
+                    SizedBox(
+                      width: KDefaultPadding / 2,
+                    ),
+                    ColorDot(
+                      colors: Colors.blueGrey,
+                      isSelected: true,
+                    ),
+                    SizedBox(
+                      width: 70,
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 25.0),
-                      child: Text("${glassproduct.size}"),
-                    ),
+                      padding: const EdgeInsets.only(bottom: 20),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Size",
+                            style: TextStyle(
+                                color: Colors.black45, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: KDefaultPadding / 2,
+                          ),
+                          Text(
+                            "${shoesproduct.size}",
+                            style: TextStyle(
+                                color: Colors.black, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    )
                   ],
                 ),
                 Text(
-                  glassproduct.title,
+                  shoesproduct.title,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 SizedBox(
@@ -210,13 +205,14 @@ class EyeDetails1 extends StatelessWidget {
                     IconSign(
                       icon1: Icons.remove,
                       press: () {
-                       glassController.setQuantity(false);
+                        shoesController.setQuantity(false);
                       },
                     ),
                     SizedBox(
                       width: 10,
                     ),
-                    Text("${glassController.retrieveGlassQuantityInCart}",
+                    Text(
+                      "${shoesController.retrieveShoeQuantityInCart}",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     SizedBox(
@@ -224,9 +220,7 @@ class EyeDetails1 extends StatelessWidget {
                     ),
                     IconSign(
                       icon1: Icons.add,
-                      press: () {
-                      glassController.setQuantity(true);
-                      },
+                      press: () {shoesController.setQuantity(true);},
                     ),
                     Spacer(),
                     Container(
@@ -275,8 +269,8 @@ class EyeDetails1 extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         onPressed: () {
-                        glassController.addGlassItem(glassproduct);
-
+                          shoesController.addShoesItem(shoesproduct);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));
                         },
                         child: Text(
                           "BUY NOW",

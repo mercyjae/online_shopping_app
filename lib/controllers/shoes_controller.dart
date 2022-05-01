@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/models/shoes_product.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 
 class ShoesController extends GetxController{
  late CartController _cartController;
@@ -27,7 +27,7 @@ class ShoesController extends GetxController{
       return quantity;
     }
   }
-  void initShoeProduct(ShoesProduct shoesProduct, CartController cartController){
+  void initShoeProduct(Product shoesProduct, CartController cartController){
     _quantity = 0;
     _cartController = cartController;
     var exist = false;
@@ -38,8 +38,8 @@ class ShoesController extends GetxController{
 
   }
 
- void addShoesItem(ShoesProduct shoesProduct){
-   _cartController.addShoesItem(shoesProduct, _quantity);
+ void addShoesItem(Product shoesProduct){
+   _cartController.addItem(shoesProduct, _quantity);
    _quantity = 0;
    _retrieveShoeQuantityInCart = _cartController.getShoesQuantity(shoesProduct);
    update();

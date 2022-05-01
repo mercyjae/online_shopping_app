@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:online_shopping/constants.dart';
-import 'package:online_shopping/screens/signup.dart';
+import 'package:online_shopping/views/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);

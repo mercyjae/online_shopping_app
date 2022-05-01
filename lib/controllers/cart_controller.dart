@@ -1,9 +1,6 @@
 import 'package:get/get.dart';
-import 'package:online_shopping/models/bag_product.dart';
-import 'package:online_shopping/models/cart_model.dart';
-import 'package:online_shopping/models/dress_products.dart';
-import 'package:online_shopping/models/glasses_products.dart';
-import 'package:online_shopping/models/shoes_product.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
+import 'package:online_shopping/views_model/cart_model.dart';
 
 class CartController extends GetxController {
   Map<int, CartModel> _cartItems = {};
@@ -12,49 +9,14 @@ class CartController extends GetxController {
   int quantity = 0;
   int totalPrice = 0;
   var totalQuantity = 0;
-  void addShoesItem(ShoesProduct shoesProduct, int quantity) {
-    if (_cartItems.containsKey(shoesProduct.id)) {
-      _cartItems.update(shoesProduct.id, (value) {
-        totalQuantity = value.quantity + quantity;
-        return CartModel(
-            id: value.id,
-            image: value.image,
-            title: value.title,
-            description: value.description,
-            price: value.price,
-            size: value.size,
-            color: value.color,
-            quantity: value.quantity + quantity,
-        shoesProduct:  shoesProduct);
-      });
-      if (totalQuantity <= 0) {
-        _cartItems.remove(shoesProduct.id);
-      }
-    } else {
-      if (quantity > 0){
-      _cartItems.putIfAbsent(
-          shoesProduct.id,
-          () => CartModel(
-                id: shoesProduct.id,
-                image: shoesProduct.image,
-                title: shoesProduct.title,
-                description: shoesProduct.description,
-                price: shoesProduct.price,
-                size: shoesProduct.size,
-                color: shoesProduct.color,
-                quantity: quantity,
-            shoesProduct: shoesProduct
-              ));
-    }}
-    update();
-  }
 
-  void addDressItem(DressProduct dressProduct, int quantity) {
+
+  void addItem(Product product, int quantity) {
     //create a total quantity variable to track the current quantity for a dress item
     //that's for the an item which already exist in the cart.
 
-    if (_cartItems.containsKey(dressProduct.id)) {
-      _cartItems.update(dressProduct.id, (value) {
+    if (_cartItems.containsKey(product.id)) {
+      _cartItems.update(product.id, (value) {
         //set the total quantity to the current quantity of the dress item
         totalQuantity = value.quantity + quantity;
         return CartModel(
@@ -67,108 +29,38 @@ class CartController extends GetxController {
             color: value.color,
             quantity: value.quantity + quantity,
             //save the dress item in the cart as well
-            dressProduct: dressProduct);
+            product: product
+        );
       });
       //use the var totalQuantity to remove the dress item from the cart once the
       //quantity gets to zero
       if (totalQuantity <= 0) {
-        _cartItems.remove(dressProduct.id);
+        _cartItems.remove(product.id);
       }
     } else {
       //for a new dress item that's not in the cart yet
       //then check if the quantity is greater than zero and add it to the cart
       if (quantity > 0) {
         _cartItems.putIfAbsent(
-            dressProduct.id,
+            product.id,
             () => CartModel(
-                id: dressProduct.id,
-                title: dressProduct.title,
-                price: dressProduct.price,
-                image: dressProduct.image,
-                description: dressProduct.description,
-                size: dressProduct.size,
-                color: dressProduct.color,
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                image: product.image,
+                description: product.description,
+                size: product.size,
+                color: product.color,
                 quantity: quantity,
                 //save the dress item in the cart model as well
-                dressProduct: dressProduct));
+              product: product
+            ));
       }
     }
     update();
   }
 
-  void addBagItem(Product bagProduct, int quantity) {
-    if (_cartItems.containsKey(bagProduct.id)) {
-      _cartItems.update(bagProduct.id, (value) {
-        totalQuantity = value.quantity + quantity;
-        return CartModel(
-            id: value.id,
-            title: value.title,
-            price: value.price,
-            image: value.image,
-            description: value.description,
-            size: value.size,
-            color: value.color,
-            quantity: value.quantity + quantity,
-        bagProduct: bagProduct);
-      });
-      if(totalQuantity <= 0){
-        _cartItems.remove(bagProduct.id);
-      }
-    } else {
-      if(quantity > 0){
-      _cartItems.putIfAbsent(
-          bagProduct.id,
-          () => CartModel(
-              id: bagProduct.id,
-              title: bagProduct.title,
-              price: bagProduct.price,
-              image: bagProduct.image,
-              description: bagProduct.description,
-              size: bagProduct.size,
-              color: bagProduct.color,
-              quantity:quantity,
-            bagProduct: bagProduct,
 
-          ));
-    }}
-    update();
-  }
-
-  void addGlassItem(GlassProduct glassProduct,int quantity) {
-    if (_cartItems.containsKey(glassProduct.id)) {
-      _cartItems.update(glassProduct.id, (value) {
-        totalQuantity = value.quantity + quantity;
-        return CartModel(
-            id: value.id,
-            title: value.title,
-            price: value.price,
-            image: value.image,
-            description: value.description,
-            size: value.size,
-            color: value.color,
-            quantity: value.quantity,
-        glassProduct: glassProduct);
-      });
-      if (totalQuantity <= 0) {
-        _cartItems.remove(glassProduct.id);
-      }
-    } else {
-      if(quantity > 0){
-      _cartItems.putIfAbsent(
-          glassProduct.id,
-          () => CartModel(
-              id: glassProduct.id,
-              title: glassProduct.title,
-              price: glassProduct.price,
-              image: glassProduct.image,
-              description: glassProduct.description,
-              size: glassProduct.size,
-              color: glassProduct.color,
-              quantity:quantity,
-          glassProduct: glassProduct));
-    }}
-    update();
-  }
 
   void removeItem(int id) {
     _cartItems.remove(id);
@@ -176,7 +68,7 @@ class CartController extends GetxController {
   }
 
   //get the quantity of a specific dress product in the cart
-  int getDressQuantity(DressProduct dressProduct) {
+  int getDressQuantity(Product dressProduct) {
     var quantity = 0;
     if (_cartItems.containsKey(dressProduct.id)) {
       _cartItems.forEach((key, value) {
@@ -197,7 +89,7 @@ class CartController extends GetxController {
       });
     }return quantity;
   }
-  int getShoesQuantity(ShoesProduct shoesProduct){
+  int getShoesQuantity(Product shoesProduct){
     var quantity = 0;
     if(_cartItems.containsKey(shoesProduct.id)){
       _cartItems.forEach((key, value) {
@@ -209,7 +101,7 @@ class CartController extends GetxController {
     }
     return quantity;
   }
-  int getGlassQuantity(GlassProduct glassProduct){
+  int getGlassQuantity(Product glassProduct){
     var quantity = 0;
     if(_cartItems.containsKey(glassProduct.id)){
       _cartItems.forEach((key, value) {
@@ -221,7 +113,7 @@ class CartController extends GetxController {
   }
 
   //checks if a dress item already exists in the cart
-  bool isDressItemInCart(DressProduct dressProduct) {
+  bool isDressItemInCart(Product dressProduct) {
     if (_cartItems.containsKey(dressProduct.id)) {
       return true;
     }
@@ -235,7 +127,7 @@ class CartController extends GetxController {
     }
 
   }
-bool isGlassItemInCart(GlassProduct glassProduct){
+bool isGlassItemInCart(Product glassProduct){
     if(_cartItems.containsKey(glassProduct.id)){
       return true;
     }
@@ -244,7 +136,7 @@ bool isGlassItemInCart(GlassProduct glassProduct){
 
 
 
-bool isShoesInCart(ShoesProduct shoesProduct){
+bool isShoesInCart(Product shoesProduct){
     if(_cartItems.containsKey(shoesProduct.id)){
       return true;
     }

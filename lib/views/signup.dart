@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping/constants.dart';
 
+import 'home_screen.dart';
+
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
 
@@ -141,7 +143,7 @@ class _SignupState extends State<Signup> {
                   Text("Already have an account?",
                       style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey)),
                   SizedBox(width: 3,),
-                  InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Signup()));},
+                  InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));},
                       child: Text("Sign in",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.amber),))
                 ],)
             ],

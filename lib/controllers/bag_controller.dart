@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/models/bag_product.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 
 class BagController extends GetxController{
   late CartController _cartController;
@@ -41,7 +41,7 @@ class BagController extends GetxController{
   }
 
   void addBagItem(Product bagProduct){
-    _cartController.addBagItem(bagProduct, _quantity);
+    _cartController.addItem(bagProduct, _quantity);
     _quantity = 0;
     _retrieveBagQuantityInCart = _cartController.getBagQuantity(bagProduct);
     update();

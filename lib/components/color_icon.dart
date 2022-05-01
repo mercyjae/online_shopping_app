@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
+
+
+
+
 class IconSign extends StatelessWidget {
   final IconData icon1;
   final Function() press;
   const IconSign({
     Key? key,
     required this.icon1,
-    required this.press,
+     required this.press
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 32,
-      width: 32,
+      height: 30,
+      width: 30,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
@@ -23,7 +27,7 @@ class IconSign extends StatelessWidget {
           onPressed: press,
           icon: Icon(
             icon1,
-            size: 20,
+            size: 15,
           )),
     );
   }

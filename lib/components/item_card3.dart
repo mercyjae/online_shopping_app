@@ -1,46 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:online_shopping/models/shoes_product.dart';
-import 'package:online_shopping/screens/footwear/shoedetails_screen.dart';
-import '../../constants.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 
-class ShoeScreen extends StatefulWidget {
-  const ShoeScreen({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<ShoeScreen> createState() => _ShoeScreenState();
-}
-
-class _ShoeScreenState extends State<ShoeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      SizedBox(
-        height: 20,
-      ),
-      Expanded(
-          child: GridView.builder(
-              itemCount: shoe.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.90, crossAxisCount: 2),
-              itemBuilder: (context, int index) => ItemCard3(
-                    shoesproduct: shoe[index],
-                    press: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ShoeDetailsScreen(
-                                  shoesproduct: shoe[index])));
-                    },
-                  ))),
-    ]);
-  }
-}
-
+import '../constants.dart';
 
 class ItemCard3 extends StatelessWidget {
-  final ShoesProduct shoesproduct;
+  final Product shoesproduct;
   final Function() press;
   const ItemCard3({
     Key? key,
@@ -57,7 +21,7 @@ class ItemCard3 extends StatelessWidget {
         children: [
           Padding(
             padding:
-            const EdgeInsets.symmetric(horizontal: KDefaultPadding / 2),
+             EdgeInsets.symmetric(horizontal: KDefaultPadding / 2),
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 5),
               height: 150,

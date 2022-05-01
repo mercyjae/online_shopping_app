@@ -1,115 +1,116 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
-import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:get/get.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/controllers/bag_controller.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/controllers/shoes_controller.dart';
-import 'package:online_shopping/models/shoes_product.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 
 import '../cart_screen.dart';
 
-class ShoeDetailsScreen extends StatefulWidget {
-  final cartController = Get.put(CartController());
-  final ShoesProduct shoesproduct;
-  ShoeDetailsScreen({Key? key, required this.shoesproduct}) : super(key: key);
-
+class DetailsScreen extends StatefulWidget {
+  final Product product;
+  DetailsScreen({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
   @override
-  State<ShoeDetailsScreen> createState() => _ShoeDetailsScreenState();
+  _DetailsScreenState createState() => _DetailsScreenState();
 }
 
-class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
+class _DetailsScreenState extends State<DetailsScreen> {
+  bool isSelected = true;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: widget.shoesproduct.color,
+      backgroundColor: widget.product.color,
       appBar: AppBar(
-        backgroundColor: widget.shoesproduct.color,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_sharp,
-            color: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        actions: [
-          IconButton(
+          elevation: 0,
+          backgroundColor: widget.product.color,
+          leading: IconButton(
             icon: Icon(
-              Icons.search,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(
-              Icons.add_shopping_cart_outlined,
+              Icons.arrow_back_sharp,
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => CartScreen()));
+              Navigator.pop(context);
             },
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            ShoesDetails1(
-              shoesproduct: widget.shoesproduct,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(widget.shoesproduct.title,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold)),
-                  Text(
-                    widget.shoesproduct.description,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Row(
-                    children: [
-                      RichText(
-                          text: TextSpan(children: [
-                        TextSpan(
-                            text: "Price\n",
-                            style: TextStyle(color: Colors.white)),
-                        TextSpan(
-                            text: "\$234",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold))
-                      ])),
-                    ],
-                  )
-                ],
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
               ),
+              onPressed: () {},
             ),
-            Positioned(
-                bottom: 350,
-                left: 80,
-                right: 0,
-                child: Image.asset(
-                  widget.shoesproduct.image,
-                  width: 200,
-                )),
+            IconButton(
+              icon: Icon(
+                Icons.add_shopping_cart_outlined,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CartScreen()));
+              },
+            ),
+          ]),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Stack(
+              children: [
+                DetailsScreen1(product: widget.product),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.product.title,
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                      Text(
+                        "Office code",
+                        style: TextStyle(
+                            fontSize: 35,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      Row(
+                        children: [
+                          RichText(
+                              text: TextSpan(children: [
+                            TextSpan(
+                                text: "Price\n",
+                                style: TextStyle(color: Colors.white)),
+                            TextSpan(
+                                text: "\$${widget.product.price}",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold))
+                          ])),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Positioned(
+                  bottom: 250,
+                  right: 0,
+                  left: 50,
+                  child: Image.asset(widget.product.image),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -117,27 +118,43 @@ class _ShoeDetailsScreenState extends State<ShoeDetailsScreen> {
   }
 }
 
-class ShoesDetails1 extends StatelessWidget {
+class DetailsScreen1 extends StatelessWidget {
   final cartController = Get.put(CartController());
-  final ShoesProduct shoesproduct;
-  ShoesDetails1({Key? key, required this.shoesproduct}) : super(key: key);
+  final Product product;
+  // final int index;
+  DetailsScreen1({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  // int items = 01;
+  // void numOfItems1(){
+  //   setState(() {
+  //     items++;
+  //   });
+  // }
+  // void numOfItems2(){
+  //   setState(() {
+  //     items--;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    Get.put(ShoesController());
-    Get.find<ShoesController>().initShoeProduct(shoesproduct, Get.find<CartController>());
-    return GetBuilder<ShoesController>(
-      builder: (shoesController) {
+    Get.put(BagController());
+    Get.find<BagController>()
+        .initBagProduct(product, Get.find<CartController>());
+    return GetBuilder<BagController>(builder: (bagController) {
         return Container(
           margin: EdgeInsets.only(top: size.height * 0.3),
           height: 400,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20), topLeft: Radius.circular(20))),
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: KDefaultPadding),
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -152,13 +169,6 @@ class ShoesDetails1 extends StatelessWidget {
                 Row(
                   children: [
                     ColorDot(
-                      colors: shoesproduct.color,
-                      isSelected: true,
-                    ),
-                    SizedBox(
-                      width: KDefaultPadding / 2,
-                    ),
-                    ColorDot(
                       colors: Colors.green,
                       isSelected: true,
                     ),
@@ -166,7 +176,14 @@ class ShoesDetails1 extends StatelessWidget {
                       width: KDefaultPadding / 2,
                     ),
                     ColorDot(
-                      colors: Colors.blueGrey,
+                      colors: Colors.purple,
+                      isSelected: true,
+                    ),
+                    SizedBox(
+                      width: KDefaultPadding / 2,
+                    ),
+                    ColorDot(
+                      colors: Colors.green,
                       isSelected: true,
                     ),
                     SizedBox(
@@ -185,7 +202,7 @@ class ShoesDetails1 extends StatelessWidget {
                             height: KDefaultPadding / 2,
                           ),
                           Text(
-                            "${shoesproduct.size}",
+                            "${product.size}",
                             style: TextStyle(
                                 color: Colors.black, fontWeight: FontWeight.bold),
                           )
@@ -195,7 +212,7 @@ class ShoesDetails1 extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  shoesproduct.title,
+                  product.title,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 SizedBox(
@@ -205,13 +222,15 @@ class ShoesDetails1 extends StatelessWidget {
                   children: [
                     IconSign(
                       icon1: Icons.remove,
-                      press: () {shoesController.setQuantity(false);},
+                      press: () {
+                        bagController.setQuantity(false);
+                      },
                     ),
                     SizedBox(
                       width: 10,
                     ),
                     Text(
-                     "${shoesController.retrieveShoeQuantityInCart}",
+                      "${bagController.retrieveBagQuantityInCart}",
                       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     SizedBox(
@@ -219,7 +238,7 @@ class ShoesDetails1 extends StatelessWidget {
                     ),
                     IconSign(
                       icon1: Icons.add,
-                      press: () {shoesController.setQuantity(true);},
+                      press: () {bagController.setQuantity(true);},
                     ),
                     Spacer(),
                     Container(
@@ -268,7 +287,9 @@ class ShoesDetails1 extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                         onPressed: () {
-                          shoesController.addShoesItem(shoesproduct);
+
+                          bagController.addBagItem(product);
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));
                         },
                         child: Text(
                           "BUY NOW",

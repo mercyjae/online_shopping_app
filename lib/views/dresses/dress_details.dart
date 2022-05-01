@@ -6,11 +6,11 @@ import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/controllers/dress_controller.dart';
-import 'package:online_shopping/models/dress_products.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 import '../cart_screen.dart';
 
 class DressDetails extends StatefulWidget {
-  final DressProduct dressproduct;
+  final Product dressproduct;
   DressDetails({Key? key, required this.dressproduct}) : super(key: key);
   @override
   State<DressDetails> createState() => _DressDetailsState();
@@ -88,7 +88,7 @@ class _DressDetailsState extends State<DressDetails> {
                             text: "Price\n",
                             style: TextStyle(color: Colors.white)),
                         TextSpan(
-                            text: "\$234",
+                            text: "\$${widget.dressproduct.price}",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -116,7 +116,7 @@ class _DressDetailsState extends State<DressDetails> {
 
 class DressDetails1 extends StatelessWidget {
   final cartController = Get.put(CartController());
-  final DressProduct dressproduct;
+  final Product dressproduct;
   DressDetails1({Key? key, required this.dressproduct}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -218,11 +218,8 @@ class DressDetails1 extends StatelessWidget {
                   ),
                   IconSign(
                     icon1: Icons.add,
-                    press: () {
-                      dressController.setQuantity(true);
-                    },
-                  ),
-                  Spacer(),
+                    press: () {dressController.setQuantity(true);},
+                  ),Spacer(),
                   Container(
                     height: 20,
                     width: 20,
@@ -270,6 +267,7 @@ class DressDetails1 extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10)),
                       onPressed: () {
                         dressController.addDressItem(dressproduct);
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));
                       },
                       child: Text(
                         "BUY NOW",
