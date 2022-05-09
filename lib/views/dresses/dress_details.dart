@@ -141,7 +141,7 @@ class DressDetails1 extends StatelessWidget {
                 height: 150,
               ),
               Text(
-                "Color",
+                "Colors",
                 style: TextStyle(
                     color: Colors.black45, fontWeight: FontWeight.bold),
               ),
@@ -149,27 +149,27 @@ class DressDetails1 extends StatelessWidget {
                 children: [
                   ColorDot(
                     colors: dressproduct.color,
-                    isSelected: true,
+                    isSelected: false,
                   ),
                   SizedBox(
                     width: KDefaultPadding / 2,
                   ),
                   ColorDot(
                     colors: Colors.pinkAccent,
-                    isSelected: true,
+                    isSelected: false,
                   ),
                   SizedBox(
                     width: KDefaultPadding / 2,
                   ),
                   ColorDot(
                     colors: Colors.purple,
-                    isSelected: true,
+                    isSelected: false,
                   ),
                   SizedBox(
                     width: 70,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: const EdgeInsets.only(bottom: 30),
                     child: Column(
                       children: [
                         Text(

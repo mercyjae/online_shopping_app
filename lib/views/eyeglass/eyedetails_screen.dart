@@ -147,7 +147,7 @@ class EyeDetails1 extends StatelessWidget {
                       crossAxisAlignment:CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Color",
+                          "Colors",
                           style: TextStyle(
                               color: Colors.black45, fontWeight: FontWeight.bold),
                         ),

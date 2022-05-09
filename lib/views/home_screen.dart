@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'bags/bag_screen.dart';
+import 'cart_screen.dart';
 import 'dresses/dress_screen.dart';
 import 'eyeglass/eyeglass_screen.dart';
 import 'footwear/shoes_screen.dart';
@@ -30,14 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
       ],),),
           appBar: AppBar(elevation: 0,backgroundColor: Colors.white,
-        // leading:
-        // IconButton(icon:Icon(Icons.arrow_back_sharp,color: Colors.black,),
-        //   onPressed: (){},),
             actions: [
           IconButton(icon:Icon(Icons.search,color: Colors.black,),
             onPressed: (){},),
           IconButton(icon:Icon(Icons.add_shopping_cart_outlined,color: Colors.black,),
-            onPressed: (){},),
+            onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));},),
         ],bottom: TabBar(
          indicatorSize: TabBarIndicatorSize.label,
             indicatorWeight: 3,

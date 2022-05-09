@@ -127,18 +127,6 @@ class DetailsScreen1 extends StatelessWidget {
     required this.product,
   }) : super(key: key);
 
-  // int items = 01;
-  // void numOfItems1(){
-  //   setState(() {
-  //     items++;
-  //   });
-  // }
-  // void numOfItems2(){
-  //   setState(() {
-  //     items--;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -162,14 +150,14 @@ class DetailsScreen1 extends StatelessWidget {
                   height: 150,
                 ),
                 Text(
-                  "Color",
+                  "Colors",
                   style:
                       TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
                 ),
                 Row(
                   children: [
                     ColorDot(
-                      colors: Colors.green,
+                      colors: product.color,
                       isSelected: true,
                     ),
                     SizedBox(

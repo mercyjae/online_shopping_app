@@ -144,7 +144,7 @@ class ShoesDetails1 extends StatelessWidget {
                   height: 150,
                 ),
                 Text(
-                  "Color",
+                  "Colors",
                   style:
                       TextStyle(color: Colors.black45, fontWeight: FontWeight.bold),
                 ),

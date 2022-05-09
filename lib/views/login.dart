@@ -65,13 +65,14 @@ class _LoginState extends State<Login> {
                     enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide(width: 2,color: Colors.white)),
                     focusedBorder:OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),borderSide: BorderSide(width: 2,color: Colors.white),)
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(width: 2,color: Colors.white),)
                     ), ),
               ),SizedBox(height: 20,),
               Padding(
                 padding: const EdgeInsets.only(left:210.0),
                 child: Container(height: 50,width: 110,
-                  decoration: BoxDecoration(gradient: LinearGradient(colors:[Colors.yellow,Colors.amber]),
+                  decoration: BoxDecoration(gradient: LinearGradient(colors:[Colors.blue,Colors.lightBlue]),
                       borderRadius: BorderRadius.circular(12)),
                   child: ElevatedButton(style:
                   ElevatedButton.styleFrom(primary: Colors.transparent,
@@ -93,7 +94,7 @@ class _LoginState extends State<Login> {
                     style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey)),
                 SizedBox(width: 3,),
                 InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> Signup()));},
-                    child: Text("Sign up",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.amber),))
+                    child: Text("Sign up",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.blue),))
               ],)
 
             ],

@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
             fontFamily: "Pacifico"),),
   SizedBox(height: 20,),
      Container(width: 200,height: 70,
-       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),color: Colors.amberAccent),
+       decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),color: Colors.lightBlue),
        child: Center(
          child: Text("Let's improve your appearance",
            style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black,),

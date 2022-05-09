@@ -62,7 +62,7 @@ class _ColorDotState extends State<ColorDot> {
             width: 20,
             height: 20,
             decoration: BoxDecoration(
-                color: widget.isSelected ? Colors.green: Colors.blue,
+                color: widget.colors,
                 shape: BoxShape.circle,
                 border: Border.all(width: 2, color: Colors.transparent)),
           )

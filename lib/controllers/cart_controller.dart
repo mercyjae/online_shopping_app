@@ -11,6 +11,15 @@ class CartController extends GetxController {
   var totalQuantity = 0;
 
 
+  int  totalAmount() {
+    var totalAmount = 0;
+     _cartItems.forEach((key, value) {
+      totalAmount += value.quantity * value.price;
+
+    });
+    return totalAmount;
+  }
+
   void addItem(Product product, int quantity) {
     //create a total quantity variable to track the current quantity for a dress item
     //that's for the an item which already exist in the cart.
@@ -142,6 +151,7 @@ bool isShoesInCart(Product shoesProduct){
     }
     return false;
 }
+
 
 
   List<CartModel> get getItems {
