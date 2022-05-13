@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
-
-
 class IconSign extends StatelessWidget {
   final IconData icon1;
   final Function() press;
