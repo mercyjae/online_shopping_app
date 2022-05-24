@@ -1,7 +1,4 @@
 import 'dart:ui';
-
-
-
 import 'bag_product.dart';
 
 class CartModel {

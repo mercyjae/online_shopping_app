@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543518841312",
+    "project_id": "onlineshoppingapp-ca6dc",
+    "storage_bucket": "onlineshoppingapp-ca6dc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543518841312:android:5a1e6e0b8b92864d72f385",
+        "android_client_info": {
+          "package_name": "com.example.online_shopping_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543518841312-8urk28lc9fvn3q0f9bshsfegmosh52a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwT5-FSWpmL8tVHur_6rziJ-9SXHhgOl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543518841312-8urk28lc9fvn3q0f9bshsfegmosh52a1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,10 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/views/login.dart';
 
 import 'home_screen.dart';
 
@@ -11,6 +16,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  final FirebaseAuth auth = FirebaseAuth.instance;
   final TextEditingController firstNameController =  TextEditingController();
   final TextEditingController lastNameController =  TextEditingController();
   final TextEditingController emailController =  TextEditingController();
@@ -28,7 +34,6 @@ class _SignupState extends State<Signup> {
         child: Form(key: formKey,
           child: Column(children:[
             SizedBox(height: 30,),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal:KDefaultPadding),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,6 +43,9 @@ class _SignupState extends State<Signup> {
                 SizedBox(height: 30,),
                 Card(
                   child: TextFormField(controller: firstNameController,
+                    validator: (value){
+                    if(value!.isEmpty) return "pls enter first name";
+                    },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
                     keyboardType:TextInputType.emailAddress,
@@ -53,7 +61,9 @@ class _SignupState extends State<Signup> {
                       ) ),),
                 ),
                 Card(
-                  child: TextFormField( controller: lastNameController,
+                  child: TextFormField( controller: lastNameController,validator: (value){
+                    if(value!.isEmpty) return "pls enter last name";
+                  },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
                     keyboardType:TextInputType.emailAddress,
@@ -70,6 +80,9 @@ class _SignupState extends State<Signup> {
                 ),
                 Card(
                   child: TextFormField(controller: emailController,
+                    validator: (value){
+                      if(value!.isEmpty) return "pls enter a valid email";
+                    },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
                     keyboardType:TextInputType.emailAddress,
@@ -87,6 +100,9 @@ class _SignupState extends State<Signup> {
                 SizedBox(height: 10,),
                 Card(
                   child: TextFormField( controller: paswordController,
+                    validator: (value){
+                      if(value!.isEmpty) return "password cannot be empty";
+                    },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
                     keyboardType:TextInputType.emailAddress,
@@ -105,6 +121,9 @@ class _SignupState extends State<Signup> {
                 ),
                 Card(
                   child: TextFormField(controller: confirmPasswordController,
+                    validator: (value){
+                      if(value!.isEmpty) return "password doesn't match";
+                    },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
                     keyboardType:TextInputType.emailAddress,
@@ -131,7 +150,10 @@ class _SignupState extends State<Signup> {
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(12.0),
                       ),),
-                        onPressed: (){},
+                        onPressed: (){
+                      signUp();
+                      print(confirmPasswordController.text);
+                      },
                         child: Row(
                           children: [
                             Text("SIGNUP"),SizedBox(width: 10,),
@@ -155,5 +177,15 @@ class _SignupState extends State<Signup> {
     ],),
         ),
       ),);
+  }
+  void signUp() async{
+    if(formKey.currentState!.validate()){
+    await auth.createUserWithEmailAndPassword(email: emailController.text.trim(),
+        password:paswordController.text.trim()).then((value) {
+    Fluttertoast.showToast(msg: "Account created successfully");
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));});
+  }else{
+      Fluttertoast.showToast(msg: "Incorrect Details");
+    }
   }
 }
