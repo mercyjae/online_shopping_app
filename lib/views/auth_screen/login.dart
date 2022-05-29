@@ -236,7 +236,7 @@ class _LoginState extends State<Login> {
               Image.asset("assets/images/twitter.png",width: 50,),SizedBox(width: 20),
               Image.asset("assets/images/google.png",width: 50,)
             ],),
-
+            Spacer(),
           ],
         ),
       ),
