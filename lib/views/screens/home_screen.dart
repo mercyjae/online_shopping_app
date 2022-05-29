@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:online_shopping/views/dresses/dress_screen.dart';
+import 'package:online_shopping/views/eyeglass/eyeglass_screen.dart';
+import 'package:online_shopping/views/footwear/shoes_screen.dart';
+import 'package:online_shopping/views/bags/bag_screen.dart';
 
-import 'bags/bag_screen.dart';
 import 'cart_screen.dart';
-import 'dresses/dress_screen.dart';
-import 'eyeglass/eyeglass_screen.dart';
-import 'footwear/shoes_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -17,10 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return
       DefaultTabController(length: 4,
-      child: Scaffold(drawer: Drawer(child: ListView(children: [
+      child: Scaffold(drawer: Drawer(
+        child: ListView(children: [
         UserAccountsDrawerHeader(accountName:Text("Anuoluwapo"),
-            decoration: BoxDecoration(color: Colors.blue)
-            , accountEmail: Text("mercyjae20@email.com"),
+            decoration: BoxDecoration(color: Colors.blue),
+             accountEmail: Text("mercyjae20@email.com"),
           currentAccountPicture:CircleAvatar(backgroundColor: Colors.transparent,
               backgroundImage:AssetImage("assets/images/anu.jpg")) ,),
         ListTile(onTap: (){},leading:Icon(Icons.home),title: Text("Home"),),
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ListTile(onTap: (){},leading:Icon(Icons.exit_to_app),title: Text("Logout"),),
 
       ],),),
-          appBar: AppBar(elevation: 0,backgroundColor: Colors.white,
+          appBar: AppBar(elevation: 0,backgroundColor: Colors.transparent,
             actions: [
           IconButton(icon:Icon(Icons.search,color: Colors.black,),
             onPressed: (){},),

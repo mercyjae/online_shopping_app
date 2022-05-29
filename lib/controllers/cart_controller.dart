@@ -22,7 +22,7 @@ class CartController extends GetxController {
 
   void addItem(Product product, int quantity) {
     //create a total quantity variable to track the current quantity for a dress item
-    //that's for the an item which already exist in the cart.
+    //that's for the an item which already exist in the screens.
 
     if (_cartItems.containsKey(product.id)) {
       _cartItems.update(product.id, (value) {
@@ -37,18 +37,18 @@ class CartController extends GetxController {
             size: value.size,
             color: value.color,
             quantity: value.quantity + quantity,
-            //save the dress item in the cart as well
+            //save the dress item in the screens as well
             product: product
         );
       });
-      //use the var totalQuantity to remove the dress item from the cart once the
+      //use the var totalQuantity to remove the dress item from the screens once the
       //quantity gets to zero
       if (totalQuantity <= 0) {
         _cartItems.remove(product.id);
       }
     } else {
-      //for a new dress item that's not in the cart yet
-      //then check if the quantity is greater than zero and add it to the cart
+      //for a new dress item that's not in the screens yet
+      //then check if the quantity is greater than zero and add it to the screens
       if (quantity > 0) {
         _cartItems.putIfAbsent(
             product.id,
@@ -61,7 +61,7 @@ class CartController extends GetxController {
                 size: product.size,
                 color: product.color,
                 quantity: quantity,
-                //save the dress item in the cart model as well
+                //save the dress item in the screens model as well
               product: product
             ));
       }
@@ -76,7 +76,7 @@ class CartController extends GetxController {
     update();
   }
 
-  //get the quantity of a specific dress product in the cart
+  //get the quantity of a specific dress product in the screens
   int getDressQuantity(Product dressProduct) {
     var quantity = 0;
     if (_cartItems.containsKey(dressProduct.id)) {
@@ -121,7 +121,7 @@ class CartController extends GetxController {
     } return quantity;
   }
 
-  //checks if a dress item already exists in the cart
+  //checks if a dress item already exists in the screens
   bool isDressItemInCart(Product dressProduct) {
     if (_cartItems.containsKey(dressProduct.id)) {
       return true;

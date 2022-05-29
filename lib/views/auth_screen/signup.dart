@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:online_shopping/constants.dart';
-import 'package:online_shopping/views/login.dart';
+import 'package:online_shopping/views/auth_screen/login.dart';
 
-import 'home_screen.dart';
+import '../screens/home_screen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -122,7 +122,7 @@ class _SignupState extends State<Signup> {
                 Card(
                   child: TextFormField(controller: confirmPasswordController,
                     validator: (value){
-                      if(value!.isEmpty) return "password doesn't match";
+                      if(value!.isEmpty ) return "password doesn't match";
                     },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
@@ -141,18 +141,19 @@ class _SignupState extends State<Signup> {
                 ),SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.only(left: 198.0),
-                  child: Container(
+                  child:
+                   Container(
                     height: 50,width: 120,
-                    decoration: BoxDecoration(gradient: LinearGradient(colors:[Colors.lightBlue,Colors.blue]),
+                    decoration: BoxDecoration(color: Color.fromARGB(255, 223, 216, 156),
                         borderRadius: BorderRadius.circular(12)),
                     child: ElevatedButton(style:
-                    ElevatedButton.styleFrom(primary: Colors.transparent,
+                    ElevatedButton.styleFrom(primary: Color.fromARGB(255, 223, 216, 156),
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(12.0),
                       ),),
                         onPressed: (){
                       signUp();
-                      print(confirmPasswordController.text);
+                    //  print(confirmPasswordController.text);
                       },
                         child: Row(
                           children: [
@@ -161,14 +162,17 @@ class _SignupState extends State<Signup> {
                           ],
                         )),
                   ),
-                ),SizedBox(height: 20,),
+                ),
+                SizedBox(height: 20,),
                 Row(mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text("Already have an account?",
                         style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.grey)),
                     SizedBox(width: 3,),
-                    InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));},
-                        child: Text("Log in",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.blue),))
+                    InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                        HomeScreen()));},
+                        child: Text("Log in",style: TextStyle(fontSize: 15,
+                            fontWeight: FontWeight.bold,color: Color.fromARGB(255, 223, 216, 156),),))
                   ],)
               ],
             ),

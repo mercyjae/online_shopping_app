@@ -40,7 +40,7 @@ class GlassController extends GetxController{
   void addGlassItem(Product glassProduct) {
     _cartController.addItem(glassProduct, _quantity);
     _quantity = 0;
-    //retrieve the quantity of the dress item in the cart
+    //retrieve the quantity of the dress item in the screens
     _retrieveGlassQuantityInCart =
         _cartController.getGlassQuantity(glassProduct);
     update();

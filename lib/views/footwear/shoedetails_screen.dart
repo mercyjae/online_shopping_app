@@ -5,9 +5,12 @@ import 'package:get/get_state_manager/src/simple/get_state.dart';
 import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/controllers/shoes_controller.dart';import 'package:online_shopping/views_model/bag_product.dart';
+import 'package:online_shopping/controllers/shoes_controller.dart';
+import 'package:online_shopping/views_model/bag_product.dart';
 
-import '../cart_screen.dart';
+import '../screens/cart_screen.dart';
+
+
 
 class ShoeDetailsScreen extends StatefulWidget {
   final cartController = Get.put(CartController());

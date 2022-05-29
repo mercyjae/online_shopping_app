@@ -3,8 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:online_shopping/constants.dart';
-import 'package:online_shopping/views/home_screen.dart';
-import 'package:online_shopping/views/signup.dart';
+import 'package:online_shopping/views/auth_screen/signup.dart';
+
+import '../screens/home_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -98,7 +99,6 @@ class _LoginState extends State<Login> {
                       style: TextStyle(fontWeight: FontWeight.bold),
                       cursorColor: Colors.grey,
                       decoration: InputDecoration(
-                          suffixText: "Forgot",
                           prefixIcon: Icon(
                             Icons.vpn_key,
                             color: Colors.grey,
@@ -124,20 +124,42 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
+
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: true,
+                        onChanged: (value) {},
+                        activeColor: Color.fromARGB(255, 223, 216, 156),
+                      ),
+                      const Text(
+                        "Remember me",
+                        style: TextStyle(color: Colors.grey,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,),
+                      ),SizedBox(width: 45,),
+                      Text("Forgot Password?",textAlign: TextAlign.end,
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey)),
+                    ],
+                  ),
+
+
                   Padding(
                     padding: const EdgeInsets.only(left: 210.0),
                     child: Container(
                       height: 50,
                       width: 110,
                       decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              colors: [Colors.blue, Colors.lightBlue]),
+                          color: Color.fromARGB(255, 223, 216, 156),
                           borderRadius: BorderRadius.circular(12)),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.transparent,
+                            primary: Color.fromARGB(255, 223, 216, 156),
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(15.0),
                             ),
@@ -159,37 +181,62 @@ class _LoginState extends State<Login> {
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
+                  Column(
                     children: [
-                      Text("Don't have an account?",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.grey)),
-                      SizedBox(
-                        width: 3,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("Don't have an account?",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey)),
+                          SizedBox(
+                            width: 3,
+                          ),
+                          InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Signup()));
+                              },
+                              child: Text(
+                                "Sign up",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 223, 216, 156),),
+                              )),
+
+                        ],
                       ),
-                      InkWell(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Signup()));
-                          },
-                          child: Text(
-                            "Sign up",
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue),
-                          ))
                     ],
-                  )
+                  ),
+
+                ],
+              ),
+            ),SizedBox(height: 15,),
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text("Or, Log in with",style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 223, 216, 156),)),
                 ],
               ),
             ),
-            Spacer(),
+            SizedBox(height: 30,),
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Image.asset("assets/images/facebook.png",width: 50,),
+              SizedBox(width:20),
+              Image.asset("assets/images/twitter.png",width: 50,),SizedBox(width: 20),
+              Image.asset("assets/images/google.png",width: 50,)
+            ],),
+
           ],
         ),
       ),

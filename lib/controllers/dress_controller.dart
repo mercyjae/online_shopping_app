@@ -4,7 +4,7 @@ import 'package:online_shopping/views_model/bag_product.dart';
 
 
 class DressController extends GetxController {
-  //declare a late variable for the cart controller
+  //declare a late variable for the screens controller
   late CartController _cartController;
   int _quantity = 0;
   int get quantity => _quantity;
@@ -25,7 +25,7 @@ class DressController extends GetxController {
 
   int checkQuantity(int quantity) {
     /*now we check if the quantity for when the product is available
-    in the cart or not and compare if it is less than zero.*/
+    in the screens or not and compare if it is less than zero.*/
     if ((_retrieveDressQuantityInCart + quantity) < 0) {
       Get.snackbar(
         'Check Quantity',
@@ -39,17 +39,17 @@ class DressController extends GetxController {
 
   //initialize the current dress product when you navigate to the dress page
   //which is after a dress item is selected from the dress list.
-  //also initialize the cart controller to be used to retrieve the quantity of the dress in the cart
-  //and also check if a dress already exist in the cart
+  //also initialize the screens controller to be used to retrieve the quantity of the dress in the screens
+  //and also check if a dress already exist in the screens
   void initDressProduct(
       Product dressProduct, CartController cartController) {
     _quantity = 0;
     _cartController = cartController;
-    //now let's handle the case for when a dress product already exists in the cart
+    //now let's handle the case for when a dress product already exists in the screens
     var exist = false;
     exist = _cartController.isDressItemInCart(dressProduct);
-    //check if it exists in the cart and if it does, then retrieve the quantity
-    //and set it to the dress quantity in cart
+    //check if it exists in the screens and if it does, then retrieve the quantity
+    //and set it to the dress quantity in screens
     if (exist) {
       _retrieveDressQuantityInCart =
           _cartController.getDressQuantity(dressProduct);
@@ -59,7 +59,7 @@ class DressController extends GetxController {
   void addDressItem(Product dressProduct) {
     _cartController.addItem(dressProduct, _quantity);
     _quantity = 0;
-    //retrieve the quantity of the dress item in the cart
+    //retrieve the quantity of the dress item in the screens
     _retrieveDressQuantityInCart =
         _cartController.getDressQuantity(dressProduct);
     update();

@@ -4,8 +4,9 @@ import 'package:online_shopping/components/color_icon.dart';
 import 'package:online_shopping/components/item_delete.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 
-import '../constants.dart';
+import '../../constants.dart';
 import 'checkout_screen.dart';
+
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
