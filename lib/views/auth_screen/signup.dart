@@ -2,10 +2,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/views/auth_screen/login.dart';
-
 import '../screens/home_screen.dart';
 
 class Signup extends StatefulWidget {
@@ -44,7 +42,7 @@ class _SignupState extends State<Signup> {
                 Card(
                   child: TextFormField(controller: firstNameController,
                     validator: (value){
-                    if(value!.isEmpty) return "pls enter first name";
+                    if(value!.isEmpty) return "Enter first name";
                     },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
@@ -62,7 +60,7 @@ class _SignupState extends State<Signup> {
                 ),
                 Card(
                   child: TextFormField( controller: lastNameController,validator: (value){
-                    if(value!.isEmpty) return "pls enter last name";
+                    if(value!.isEmpty) return "Enter last name";
                   },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
@@ -81,7 +79,7 @@ class _SignupState extends State<Signup> {
                 Card(
                   child: TextFormField(controller: emailController,
                     validator: (value){
-                      if(value!.isEmpty) return "pls enter a valid email";
+                      if(value!.isEmpty) return "Enter a valid email";
                     },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
@@ -101,7 +99,7 @@ class _SignupState extends State<Signup> {
                 Card(
                   child: TextFormField( controller: paswordController,
                     validator: (value){
-                      if(value!.isEmpty) return "password cannot be empty";
+                      if(value!.isEmpty) return "Password cannot be empty";
                     },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
@@ -122,7 +120,7 @@ class _SignupState extends State<Signup> {
                 Card(
                   child: TextFormField(controller: confirmPasswordController,
                     validator: (value){
-                      if(value!.isEmpty ) return "password doesn't match";
+                      if(value!.isEmpty ) return "Password doesn't match";
                     },
                     autofocus:true,style: TextStyle(fontWeight: FontWeight.bold),
                     cursorColor: Colors.grey,
@@ -144,15 +142,16 @@ class _SignupState extends State<Signup> {
                   child:
                    Container(
                     height: 50,width: 120,
-                    decoration: BoxDecoration(color: Color.fromARGB(255, 223, 216, 156),
+                    decoration: BoxDecoration(color: Color.fromRGBO(240, 218, 151, 1.0),
                         borderRadius: BorderRadius.circular(12)),
                     child: ElevatedButton(style:
-                    ElevatedButton.styleFrom(primary: Color.fromARGB(255, 223, 216, 156),
+                    ElevatedButton.styleFrom(primary: Color.fromRGBO(240, 218, 151, 1.0),
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(12.0),
                       ),),
                         onPressed: (){
                       signUp();
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                     //  print(confirmPasswordController.text);
                       },
                         child: Row(
@@ -172,7 +171,7 @@ class _SignupState extends State<Signup> {
                     InkWell(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>
                         HomeScreen()));},
                         child: Text("Log in",style: TextStyle(fontSize: 15,
-                            fontWeight: FontWeight.bold,color: Color.fromARGB(255, 223, 216, 156),),))
+                            fontWeight: FontWeight.bold,color: Color.fromRGBO(240, 218, 151, 1.0)),))
                   ],)
               ],
             ),

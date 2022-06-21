@@ -20,8 +20,8 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Cart"),
+      appBar: AppBar(backgroundColor:  Color.fromRGBO(240, 218, 151, 1.0),
+        title: Text("Cart",),
       ),
       body: GetBuilder<CartController>(
         builder: (cartController) {
@@ -44,7 +44,8 @@ class _CartScreenState extends State<CartScreen> {
 
                         },
                           background: Container(color: Colors.red,padding: EdgeInsets.only(left: 15),
-                            child: Align(child: Icon(Icons.delete,color: Colors.white,),alignment: Alignment.centerLeft,),),
+                            child: Align(child: Icon(Icons.delete,color: Colors.white,),
+                              alignment: Alignment.centerLeft,),),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: Row(
@@ -144,7 +145,8 @@ class _CartScreenState extends State<CartScreen> {
 
                     Padding(
                       padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Material(borderRadius: BorderRadius.circular(15),color: Colors.blue,
+                      child: Material(borderRadius: BorderRadius.circular(15),
+                        color:Color.fromRGBO(240, 218, 151, 1.0),
                         child: MaterialButton(minWidth: 50,
                           onPressed: (){
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));

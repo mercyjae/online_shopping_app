@@ -4,7 +4,8 @@ class CheckOutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: Text("Checkout Screen"),),
+    return Scaffold(appBar: AppBar(backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
+      title: Text("Checkout Screen"),),
       body: Column(children: [
 
     ],),);
