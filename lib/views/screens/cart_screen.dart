@@ -149,7 +149,7 @@ class _CartScreenState extends State<CartScreen> {
                         color:Color.fromRGBO(240, 218, 151, 1.0),
                         child: MaterialButton(minWidth: 50,
                           onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>Onboarding()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
                           },
                           child: Text("Check Out",
                             style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),),),
