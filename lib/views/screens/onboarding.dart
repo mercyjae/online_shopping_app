@@ -64,7 +64,7 @@ class _OnboardingState extends State<Onboarding> {
                 final prefs = await SharedPreferences.getInstance();
                 prefs.setBool("showLogin", true);
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) =>Login()));
+                    context, MaterialPageRoute(builder: (context) =>CheckOutScreen()));
               },
               child: Text(
                 "LET'S GO SHOPPING",
