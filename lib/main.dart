@@ -11,7 +11,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   final prefs = await SharedPreferences.getInstance();
-  final showLogin = prefs.getBool("showLogin")??false;
+  final showLogin = prefs.getBool("showLogin") ?? false;
   Future<bool> checkEmail() async {
     return prefs.containsKey('email');
   }
