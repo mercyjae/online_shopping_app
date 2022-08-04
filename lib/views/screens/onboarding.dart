@@ -53,34 +53,38 @@ class _OnboardingState extends State<Onboarding> {
         ),
       ),
       bottomSheet: isLastPage
-          ? TextButton(
-              style: TextButton.styleFrom(
-                  primary: Color.fromRGBO(240, 218, 151, 1.0),
-                  backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
-                  minimumSize: Size.fromHeight(60),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30))),
-              onPressed: () async {
-                final prefs = await SharedPreferences.getInstance();
-                prefs.setBool("showLogin", true);
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) =>Login()));
-              },
-              child: Text(
-                "LET'S GO SHOPPING",
-                style: TextStyle(color: Colors.white),
-              ))
+          ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: TextButton(
+                  style: TextButton.styleFrom(
+                      primary: Color.fromRGBO(240, 218, 151, 1.0),
+                      backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
+                      minimumSize: Size.fromHeight(60),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                  onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.setBool("showLogin", true);
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => Login()));
+                  },
+                  child: Text("LET'S GO SHOPPING",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600))),
+            )
           : Container(
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    child: Text(
-                      "SKIP",
-                      style:
-                          TextStyle(color: Color.fromRGBO(240, 218, 151, 1.0)),
-                    ),
+                    child: Text("SKIP",
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600)),
                     onPressed: () {
                       controller.jumpTo(2);
                     },
@@ -100,7 +104,9 @@ class _OnboardingState extends State<Onboarding> {
                   TextButton(
                     child: Text("NEXT",
                         style: TextStyle(
-                            color: Color.fromRGBO(240, 218, 151, 1.0))),
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600)),
                     onPressed: () {
                       controller.nextPage(
                           duration: Duration(milliseconds: 500),
