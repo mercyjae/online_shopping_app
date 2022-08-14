@@ -156,8 +156,11 @@ class _SignupState extends State<Signup> {
                       },
                         child: Row(
                           children: [
-                            Text("SIGNUP"),SizedBox(width: 10,),
-                            Icon(Icons.arrow_forward_rounded)
+                            Text("SIGNUP",style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)),SizedBox(width: 10,),
+                            Icon(Icons.arrow_forward_rounded,     color: Colors.black,)
                           ],
                         )),
                   ),

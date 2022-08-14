@@ -21,7 +21,10 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor:  Color.fromRGBO(240, 218, 151, 1.0),
-        title: Text("Cart",),
+      leading: IconButton(icon: Icon(Icons.arrow_back,),
+      onPressed: (){},color: Colors.black,),
+        title: Text("Cart",style: TextStyle(color: Colors.black),
+),
       ),
       body: GetBuilder<CartController>(
         builder: (cartController) {
@@ -152,7 +155,8 @@ class _CartScreenState extends State<CartScreen> {
                             Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
                           },
                           child: Text("Check Out",
-                            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),),),
+                            style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,
+                            ),),),),
                     )
                   ],
                 ),
