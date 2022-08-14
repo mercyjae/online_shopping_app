@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -16,7 +15,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
- final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth = FirebaseAuth.instance;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController paswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -30,10 +29,12 @@ class _LoginState extends State<Login> {
             key: formKey,
             child: Column(
               children: [
-               SizedBox(height:60,),
-
+                SizedBox(
+                  height: 60,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: KDefaultPadding,vertical: KDefaultPadding),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: KDefaultPadding, vertical: KDefaultPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -81,8 +82,8 @@ class _LoginState extends State<Login> {
                               focusColor: Colors.black,
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white)),
+                                  borderSide: BorderSide(
+                                      width: 2, color: Colors.white)),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide:
@@ -97,7 +98,8 @@ class _LoginState extends State<Login> {
                         child: TextFormField(
                           controller: paswordController,
                           validator: (value) {
-                            if (value!.isEmpty) return "Password cannot be empty";
+                            if (value!.isEmpty)
+                              return "Password cannot be empty";
                           },
                           autofocus: true,
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -118,8 +120,8 @@ class _LoginState extends State<Login> {
                               focusColor: Colors.black,
                               enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white)),
+                                  borderSide: BorderSide(
+                                      width: 2, color: Colors.white)),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),
                                 borderSide:
@@ -130,7 +132,6 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         height: 15,
                       ),
-
                       Row(
                         children: [
                           Checkbox(
@@ -140,21 +141,25 @@ class _LoginState extends State<Login> {
                           ),
                           const Text(
                             "Remember me",
-                            style: TextStyle(color: Colors.grey,
+                            style: TextStyle(
+                              color: Colors.grey,
                               fontSize: 15,
-                              fontWeight: FontWeight.bold,),
-                          ),SizedBox(width: 45,),
-                          Text("Forgot Password?",textAlign: TextAlign.end,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 45,
+                          ),
+                          Text("Forgot Password?",
+                              textAlign: TextAlign.end,
                               style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey)),
                         ],
                       ),
-
-
                       Padding(
-                        padding: const EdgeInsets.only(left: 210.0),
+                        padding: EdgeInsets.only(left: 210.0),
                         child: Container(
                           height: 50,
                           width: 110,
@@ -173,14 +178,26 @@ class _LoginState extends State<Login> {
                               },
                               child: Row(
                                 children: [
+<<<<<<< HEAD
                                   Text("LOGIN",                                      style: TextStyle(
+=======
+                                  Text("LOGIN",
+                                      style: TextStyle(
+>>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
                                           color: Colors.black,
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold)),
                                   SizedBox(
                                     width: 5,
                                   ),
+<<<<<<< HEAD
                                   Icon(Icons.arrow_forward_rounded, color: Colors.black,)
+=======
+                                  Icon(
+                                    Icons.arrow_forward_rounded,
+                                    color: Colors.black,
+                                  )
+>>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
                                 ],
                               )),
                         ),
@@ -211,39 +228,55 @@ class _LoginState extends State<Login> {
                                   child: Text(
                                     "Sign up",
                                     style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color.fromRGBO(240, 218, 151, 1.0),),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromRGBO(240, 218, 151, 1.0),
+                                    ),
                                   )),
-
                             ],
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 20.0),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text("Or, Log in with",style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromRGBO(240, 218, 151, 1.0)),)
+                      Text(
+                        "Or, Log in with",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(240, 218, 151, 1.0)),
+                      )
                     ],
                   ),
                 ),
-                SizedBox(height: 30,),
-                Row(mainAxisAlignment: MainAxisAlignment.center,
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  Image.asset("assets/images/facebook.png",width: 50,),
-                  SizedBox(width:20),
-                  Image.asset("assets/images/twitter.png",width: 50,),SizedBox(width: 20),
-                  Image.asset("assets/images/google.png",width: 50,)
-                ],),
-
+                    Image.asset(
+                      "assets/images/facebook.png",
+                      width: 50,
+                    ),
+                    SizedBox(width: 20),
+                    Image.asset(
+                      "assets/images/twitter.png",
+                      width: 50,
+                    ),
+                    SizedBox(width: 20),
+                    Image.asset(
+                      "assets/images/google.png",
+                      width: 50,
+                    )
+                  ],
+                ),
               ],
             ),
           ),
@@ -256,15 +289,16 @@ class _LoginState extends State<Login> {
     if (formKey.currentState!.validate()) {
       await auth
           .signInWithEmailAndPassword(
-              email: emailController.text.trim(), password: paswordController.text.trim())
+              email: emailController.text.trim(),
+              password: paswordController.text.trim())
           .then((value) async {
-            Fluttertoast.showToast(msg: "Login successfully");
-            SharedPreferences preferences = await SharedPreferences.getInstance();
-            preferences.setString("email", emailController.text);
+        Fluttertoast.showToast(msg: "Login successfully");
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+        preferences.setString("email", emailController.text);
 
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));});
-      
+            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      });
     } else {
       Fluttertoast.showToast(msg: "Incorrect Details");
     }

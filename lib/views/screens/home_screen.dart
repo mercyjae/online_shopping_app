@@ -24,7 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 UserAccountsDrawerHeader(
                   accountName: Text("Anuoluwapo"),
-                  decoration: BoxDecoration(color: Colors.blue),
+                  decoration: BoxDecoration(
+                    color: Color.fromRGBO(240, 218, 151, 1.0),
+                  ),
                   accountEmail: Text("mercyjae20@email.com"),
                   currentAccountPicture: CircleAvatar(
                       backgroundColor: Colors.transparent,
