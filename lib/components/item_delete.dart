@@ -9,11 +9,11 @@ class ItemDelete extends StatelessWidget {
       title: const Text("Delete Confirmation"),
       content: const Text("Are you sure you want to delete this item?"),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
             onPressed: () => Navigator.of(context).pop(true),
             child: const Text("Delete")
         ),
-        FlatButton(
+        TextButton(
           onPressed: () => Navigator.of(context).pop(false),
           child: const Text("Cancel"),
         ),

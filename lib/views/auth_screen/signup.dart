@@ -172,6 +172,7 @@ class _SignupState extends State<Signup> {
                     Card(
                       child: TextFormField(
                         controller: paswordController,
+                        obscureText:true,
                         validator: (value) {
                           if (value!.isEmpty) return "Password cannot be empty";
                         },
@@ -190,6 +191,7 @@ class _SignupState extends State<Signup> {
                                 fontWeight: FontWeight.w900,
                                 color: Colors.grey,
                                 fontSize: 13),
+                                
                             labelStyle:
                                 TextStyle(color: Colors.grey, fontSize: 13),
                             focusColor: Colors.black,
@@ -206,6 +208,7 @@ class _SignupState extends State<Signup> {
                     ),
                     Card(
                       child: TextFormField(
+                        obscureText: true,
                         controller: confirmPasswordController,
                         validator: (value) {
                           if (value!.isEmpty) return "Password doesn't match";

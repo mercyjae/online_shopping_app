@@ -18,7 +18,8 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(leading: IconButton(icon: Icon(Icons.arrow_back,color: Colors.black,),
+        onPressed: (){Navigator.pop(context);},),
         backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
         title: Text(
           "Cart",
@@ -34,7 +35,7 @@ class _CartScreenState extends State<CartScreen> {
                 itemCount: _cartList.length,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    key: ValueKey(_cartList[index].product!.id),
+                    key:UniqueKey(),
                     direction: DismissDirection.startToEnd,
                     onDismissed: (direction) {},
                     confirmDismiss: (direction) async {

@@ -33,12 +33,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundImage: AssetImage("assets/images/anu.jpg")),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));},
                   leading: Icon(Icons.home),
                   title: Text("Home"),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>CartScreen()));
+                  },
                   leading: Icon(Icons.shopping_cart),
                   title: Text("Cart"),
                 ),

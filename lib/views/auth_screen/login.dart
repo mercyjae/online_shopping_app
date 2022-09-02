@@ -96,6 +96,7 @@ class _LoginState extends State<Login> {
                       ),
                       Card(
                         child: TextFormField(
+                          obscureText: true,
                           controller: paswordController,
                           validator: (value) {
                             if (value!.isEmpty)

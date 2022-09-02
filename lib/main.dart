@@ -1,11 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:online_shopping/views/auth_screen/login.dart';
-import 'package:online_shopping/views/screens/home_screen.dart';
-import 'package:online_shopping/views/screens/onboarding.dart';
 import 'package:online_shopping/views/splash_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
