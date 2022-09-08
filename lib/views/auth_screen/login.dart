@@ -19,9 +19,10 @@ class _LoginState extends State<Login> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController paswordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  RegExp regPass = RegExp(r"^.{6,}$");
+  RegExp regEmail = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
   @override
   Widget build(BuildContext context) {
-    // final emailField =
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -60,7 +61,13 @@ class _LoginState extends State<Login> {
                         child: TextFormField(
                           controller: emailController,
                           validator: (value) {
-                            if (value!.isEmpty) return "Field cannot be empty";
+                            if (value!.isEmpty) {
+                              return ("Field cannot be empty");
+                            }
+                            if (!regEmail.hasMatch(value)) {
+                              return ("Please Enter a valid email");
+                            }
+                            return null;
                           },
                           autofocus: true,
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -98,8 +105,12 @@ class _LoginState extends State<Login> {
                         child: TextFormField(
                           controller: paswordController,
                           validator: (value) {
-                            if (value!.isEmpty)
-                              return "Password cannot be empty";
+                            if (value!.isEmpty) {
+                              return ("Password is required for login");
+                            }
+                            if (!regPass.hasMatch(value)) {
+                              return ("Enter Valid Password(Min.6 Character)");
+                            }
                           },
                           autofocus: true,
                           style: TextStyle(fontWeight: FontWeight.bold),
@@ -178,7 +189,6 @@ class _LoginState extends State<Login> {
                               },
                               child: Row(
                                 children: [
-                              
                                   Text("LOGIN",
                                       style: TextStyle(
                                           color: Colors.black,
@@ -187,7 +197,6 @@ class _LoginState extends State<Login> {
                                   SizedBox(
                                     width: 5,
                                   ),
-                                
                                   Icon(
                                     Icons.arrow_forward_rounded,
                                     color: Colors.black,
