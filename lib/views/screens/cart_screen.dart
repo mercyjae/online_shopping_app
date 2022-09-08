@@ -18,21 +18,13 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
+
       appBar: AppBar(backgroundColor:  Color.fromRGBO(240, 218, 151, 1.0),
       leading: IconButton(icon: Icon(Icons.arrow_back,),
       onPressed: (){},color: Colors.black,),
         title: Text("Cart",style: TextStyle(color: Colors.black),
-),
-=======
-      appBar: AppBar(
-        backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
-        title: Text(
-          "Cart",
-          style: TextStyle(color: Colors.black),
-        ),
->>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
-      ),
+),),
+     
       body: GetBuilder<CartController>(builder: (cartController) {
         var _cartList = cartController.getItems;
         return Column(
@@ -175,32 +167,16 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ),
                     ),
-<<<<<<< HEAD
-
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Material(borderRadius: BorderRadius.circular(15),
-                        color:Color.fromRGBO(240, 218, 151, 1.0),
-                        child: MaterialButton(minWidth: 50,
-                          onPressed: (){
-                            Navigator.push(context, MaterialPageRoute(builder: (context)=>CheckOutScreen()));
-                          },
-                          child: Text("Check Out",
-                            style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,
-                            ),),),),
-                    )
-                  ],
+              )],
                 ),
-=======
                   )
                 ],
->>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
-              ),
-            ),
-            //SizedBox(height: 100,),
-          ],
-        );
-      }),
+              );
+      }
+            
+          
+        
+      ),
     );
   }
 }

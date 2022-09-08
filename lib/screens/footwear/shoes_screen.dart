@@ -3,7 +3,6 @@ import 'package:online_shopping/components/item_card3.dart';
 import 'package:online_shopping/views/footwear/shoedetails_screen.dart';
 import 'package:online_shopping/views_model/shoes_product.dart';
 
-import '../../constants.dart';
 class ShoeScreen extends StatefulWidget {
   const ShoeScreen({
     Key? key,
