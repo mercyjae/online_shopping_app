@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:online_shopping/components/custon_textfield.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/views/auth_screen/login.dart';
 import '../screens/home_screen.dart';
@@ -17,7 +18,7 @@ class _SignupState extends State<Signup> {
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController paswordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final formKey = GlobalKey<FormState>();
@@ -62,208 +63,108 @@ class _SignupState extends State<Signup> {
                         SizedBox(
                           height: 30,
                         ),
-                        Card(
-                          child: TextFormField(
-                            controller: firstNameController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return ("Field is required");
-                              }
-                              if (!regPass.hasMatch(value)) {
-                                return ("Enter 6 characters");
-                              }
-                            },
-                            autofocus: true,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            cursorColor: Colors.grey,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  color: Colors.grey,
-                                ),
-                                labelText: "First Name",
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.auto,
-                                floatingLabelStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.grey,
-                                    fontSize: 13),
-                                labelStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 13),
-                                focusColor: Colors.black,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        width: 2, color: Colors.white)),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white),
-                                )),
+                        CustomTextField(
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.grey,
                           ),
-                        ),
-                        Card(
-                          child: TextFormField(
-                            controller: lastNameController,
-                            validator: (value) {
-                              if (value!.isEmpty) return "Enter last name";
-                            },
-                            autofocus: true,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            cursorColor: Colors.grey,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.person,
-                                  color: Colors.grey,
-                                ),
-                                labelText: "Last Name",
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.auto,
-                                floatingLabelStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.grey,
-                                    fontSize: 13),
-                                labelStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 13),
-                                focusColor: Colors.black,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        width: 2, color: Colors.white)),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white),
-                                )),
-                          ),
-                        ),
-                        Card(
-                          child: TextFormField(
-                            controller: emailController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return ("Field is required");
-                              }
-                              if (!regPass.hasMatch(value)) {
-                                return ("Enter 6 characters");
-                              }
-                            },
-                            autofocus: true,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            cursorColor: Colors.grey,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.email_outlined,
-                                  color: Colors.grey,
-                                ),
-                                labelText: "Email",
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.auto,
-                                floatingLabelStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.grey,
-                                    fontSize: 13),
-                                labelStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 13),
-                                focusColor: Colors.black,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        width: 2, color: Colors.white)),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white),
-                                )),
-                          ),
+                          controller: firstNameController,
+                          keyboardType: TextInputType.name,
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return ("Field is required");
+                            }
+                            if (!regPass.hasMatch(value)) {
+                              return ("Enter 6 characters");
+                            }
+                          },
+                          textInputAction: TextInputAction.next,
+                          labelText: "First Name",
                         ),
                         SizedBox(
                           height: 10,
                         ),
-                        Card(
-                          child: TextFormField(
-                            controller: paswordController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return ("Password is required for login");
-                              }
-                              if (!regPass.hasMatch(value)) {
-                                return ("Enter Valid Password(Min.6 Character)");
-                              }
-                            },
-                            autofocus: true,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            cursorColor: Colors.grey,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.vpn_key,
-                                  color: Colors.grey,
-                                ),
-                                labelText: "Password",
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.auto,
-                                floatingLabelStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.grey,
-                                    fontSize: 13),
-                                labelStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 13),
-                                focusColor: Colors.black,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        width: 2, color: Colors.white)),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white),
-                                )),
+                        CustomTextField(
+                          prefixIcon: Icon(
+                            Icons.person,
+                            color: Colors.grey,
                           ),
+                          controller: lastNameController,
+                          keyboardType: TextInputType.name,
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return ("Field is required");
+                            }
+                            if (!regPass.hasMatch(value)) {
+                              return ("Enter 6 characters");
+                            }
+                          },
+                          textInputAction: TextInputAction.next,
+                          labelText: 'Last Name',
                         ),
-                        Card(
-                          child: TextFormField(
-                            controller: confirmPasswordController,
-                            validator: (value) {
-                              if (paswordController.text !=
-                                  confirmPasswordController.text) {
-                                return "Password doesn't match";
-                              } else {
-                                return null;
-                              }
-                            },
-                            autofocus: true,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                            cursorColor: Colors.grey,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: InputDecoration(
-                                prefixIcon: Icon(
-                                  Icons.vpn_key,
-                                  color: Colors.grey,
-                                ),
-                                labelText: " Confirm Password",
-                                floatingLabelBehavior:
-                                    FloatingLabelBehavior.auto,
-                                floatingLabelStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.grey,
-                                    fontSize: 13),
-                                labelStyle:
-                                    TextStyle(color: Colors.grey, fontSize: 13),
-                                focusColor: Colors.black,
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                    borderSide: BorderSide(
-                                        width: 2, color: Colors.white)),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide:
-                                      BorderSide(width: 2, color: Colors.white),
-                                )),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CustomTextField(
+                          prefixIcon: Icon(
+                            Icons.email_outlined,
+                            color: Colors.grey,
                           ),
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return ("Field cannot be empty");
+                            }
+                            if (!regEmail.hasMatch(value)) {
+                              return ("Please Enter a valid email");
+                            }
+                            return null;
+                          },
+                          textInputAction: TextInputAction.next,
+                          labelText: "Email",
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CustomTextField(
+                          prefixIcon: Icon(
+                            Icons.vpn_key,
+                            color: Colors.grey,
+                          ),
+                          controller: emailController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          validate: (value) {
+                            if (value!.isEmpty) {
+                              return ("Password is required for login");
+                            }
+                            if (!regPass.hasMatch(value)) {
+                              return ("Enter Valid Password(Min.6 Character)");
+                            }
+                          },
+                          textInputAction: TextInputAction.next,
+                          labelText: "Password",
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CustomTextField(
+                          prefixIcon: Icon(
+                            Icons.vpn_key,
+                            color: Colors.grey,
+                          ),
+                          controller: confirmPasswordController,
+                          keyboardType: TextInputType.numberWithOptions(),
+                          validate: (value) {
+                            if (passwordController.text !=
+                                confirmPasswordController.text) {
+                              return "Password doesn't match";
+                            } else {
+                              return null;
+                            }
+                          },
+                          textInputAction: TextInputAction.done,
+                          labelText: " Confirm Password",
                         ),
                         SizedBox(
                           height: 10,
@@ -352,7 +253,7 @@ class _SignupState extends State<Signup> {
       await auth
           .createUserWithEmailAndPassword(
               email: emailController.text.trim(),
-              password: paswordController.text.trim())
+              password: passwordController.text.trim())
           .then((value) {
         Fluttertoast.showToast(msg: "Account created successfully");
         Navigator.push(
