@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_shopping/components/item_card3.dart';
+import 'package:online_shopping/utils/item_card3.dart';
 import 'package:online_shopping/views/footwear/shoedetails_screen.dart';
 import 'package:online_shopping/model/shoes_product.dart';
 

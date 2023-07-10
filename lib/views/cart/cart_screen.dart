@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:online_shopping/components/color_icon.dart';
-import 'package:online_shopping/components/item_delete.dart';
+import 'package:online_shopping/utils/color_icon.dart';
+import 'package:online_shopping/utils/item_delete.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 
-import '../../constants.dart';
+import '../../utils/constants.dart';
 import 'checkout_screen.dart';
 
 class CartScreen extends StatefulWidget {

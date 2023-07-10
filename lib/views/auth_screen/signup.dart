@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:online_shopping/components/custon_textfield.dart';
-import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/utils/custon_textfield.dart';
+import 'package:online_shopping/utils/constants.dart';
 import 'package:online_shopping/views/auth_screen/login.dart';
 import '../starter/home_screen.dart';
 

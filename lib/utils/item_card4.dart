@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping/model/bag_product.dart';
 
-import '../constants.dart';
+import 'constants.dart';
 class ItemCard4 extends StatelessWidget {
   final Product glassProduct;
   final Function() press;

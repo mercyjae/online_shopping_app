@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:online_shopping/components/color_icon.dart';
-import 'package:online_shopping/constants.dart';
+import 'package:online_shopping/utils/color_icon.dart';
+import 'package:online_shopping/utils/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/controllers/dress_controller.dart';
 import 'package:online_shopping/model/bag_product.dart';

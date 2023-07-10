@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping/model/bag_product.dart';
 
-import '../constants.dart';
+import 'constants.dart';
 
-class ItemCard1 extends StatelessWidget {
-  final Product product;
+class ItemCard3 extends StatelessWidget {
+  final Product shoesproduct;
   final Function() press;
-  const ItemCard1({Key? key, required this.product, required this.press})
-      : super(key: key);
+  const ItemCard3({
+    Key? key,
+    required this.shoesproduct,
+    required this.press,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,20 +23,20 @@ class ItemCard1 extends StatelessWidget {
             padding:
              EdgeInsets.symmetric(horizontal: KDefaultPadding / 2),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 6),
+              padding: EdgeInsets.symmetric(horizontal: 5),
               height: 150,
               width: 150,
               decoration: BoxDecoration(
-                  color: product.color,
-                  borderRadius: BorderRadius.circular(10)),
-              child: Image.asset(product.image),
+                  borderRadius: BorderRadius.circular(12),
+                  color: shoesproduct.color),
+              child: Image.asset(shoesproduct.image),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-                vertical: 5, horizontal: KDefaultPadding - 5),
+            padding:
+            const EdgeInsets.symmetric(horizontal: KDefaultPadding - 5),
             child: Text(
-              product.title,
+              shoesproduct.title,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 15,
@@ -42,10 +46,8 @@ class ItemCard1 extends StatelessWidget {
           Padding(
             padding:
             const EdgeInsets.symmetric(horizontal: KDefaultPadding - 5),
-            child: Text(
-              "\$${product.price}",
-              style: TextStyle(color: Colors.black, fontSize: 15),
-            ),
+            child: Text("\$${shoesproduct.price}",
+                style: TextStyle(color: Colors.black, fontSize: 15)),
           )
         ],
       ),
