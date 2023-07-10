@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:online_shopping/views_model/bag_product.dart';
-import 'package:online_shopping/views_model/cart_model.dart';
+import 'package:online_shopping/model/bag_product.dart';
+import 'package:online_shopping/model/cart_model.dart';
 
 class CartController extends GetxController {
   Map<int, CartModel> _cartItems = {};

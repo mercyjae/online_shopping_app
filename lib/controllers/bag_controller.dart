@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
-import 'package:online_shopping/views_model/bag_product.dart';
+import 'package:online_shopping/model/bag_product.dart';
 
 class BagController extends GetxController{
   late CartController _cartController;

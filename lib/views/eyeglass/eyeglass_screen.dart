@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping/components/item_card4.dart';
-import 'package:online_shopping/views_model/glasses_products.dart';
+import 'package:online_shopping/model/glasses_products.dart';
 
 import 'eyedetails_screen.dart';
 

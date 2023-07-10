@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping/components/item_card1.dart';
-import 'package:online_shopping/views_model/bag_product.dart';
+import 'package:online_shopping/model/bag_product.dart';
 
-import 'details_screen.dart';
+import 'bag_details_screen.dart';
 
 class BagScreen extends StatefulWidget {
   const BagScreen({Key? key}) : super(key: key);
