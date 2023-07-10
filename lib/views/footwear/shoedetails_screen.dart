@@ -267,10 +267,10 @@ class ShoesDetails1 extends StatelessWidget {
                       width: 40,
                     ),
                     Expanded(
-                      child: RaisedButton(
-                        color: Colors.grey,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                      child: TextButton(
+                        // color: Colors.grey,
+                        // shape: RoundedRectangleBorder(
+                        //     borderRadius: BorderRadius.circular(10)),
                         onPressed: () {
                           shoesController.addShoesItem(shoesproduct);
                           Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));

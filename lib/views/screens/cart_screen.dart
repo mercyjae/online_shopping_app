@@ -23,9 +23,7 @@ class _CartScreenState extends State<CartScreen> {
       onPressed: (){},color: Colors.black,),
         title: Text("Cart",style: TextStyle(color: Colors.black),
 ),),
-
-
-
+     
       body: GetBuilder<CartController>(builder: (cartController) {
         var _cartList = cartController.getItems;
         return Column(
@@ -168,13 +166,16 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ),
                     ),
-
-
-            ),
-            //SizedBox(height: 100,),
-          ],
-        );
-      }),
+              )],
+                ),
+                  )
+                ],
+              );
+      }
+            
+          
+        
+      ),
     );
   }
 }

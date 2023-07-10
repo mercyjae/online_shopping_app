@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:online_shopping/components/custon_textfield.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/views/auth_screen/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -17,11 +18,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final FirebaseAuth auth = FirebaseAuth.instance;
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController paswordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  RegExp regPass = RegExp(r"^.{6,}$");
+  RegExp regEmail = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
   @override
   Widget build(BuildContext context) {
-    // final emailField =
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
@@ -56,79 +58,45 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         height: 30,
                       ),
-                      Card(
-                        child: TextFormField(
-                          controller: emailController,
-                          validator: (value) {
-                            if (value!.isEmpty) return "Enter a valid email";
-                          },
-                          autofocus: true,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          cursorColor: Colors.grey,
-                          keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: Colors.grey,
-                              ),
-                              labelText: "EMAIL",
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
-                              floatingLabelStyle: TextStyle(
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.grey,
-                                  fontSize: 13),
-                              labelStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 13),
-                              focusColor: Colors.black,
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                      width: 2, color: Colors.white)),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.white),
-                              )),
+                      CustomTextField(
+                        controller: emailController,
+                        labelText: "EMAIL",
+                        keyboardType: TextInputType.emailAddress,
+                        prefixIcon: Icon(
+                          Icons.email_outlined,
+                          color: Colors.grey,
                         ),
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return ("Field cannot be empty");
+                          }
+                          if (!regEmail.hasMatch(value)) {
+                            return ("Please Enter a valid email");
+                          }
+                          return null;
+                        },
+                        textInputAction: TextInputAction.next,
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
-                      Card(
-                        child: TextFormField(
-                          obscureText: true,
-                          controller: paswordController,
-                          validator: (value) {
-                            if (value!.isEmpty)
-                              return "Password cannot be empty";
-                          },
-                          autofocus: true,
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                          cursorColor: Colors.grey,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(
-                                Icons.vpn_key,
-                                color: Colors.grey,
-                              ),
-                              labelText: "PASSWORD",
-                              floatingLabelBehavior: FloatingLabelBehavior.auto,
-                              floatingLabelStyle: TextStyle(
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.grey,
-                                  fontSize: 13),
-                              labelStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 13),
-                              focusColor: Colors.black,
-                              enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(
-                                      width: 2, color: Colors.white)),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    BorderSide(width: 2, color: Colors.white),
-                              )),
+                      CustomTextField(
+                        prefixIcon: Icon(
+                          Icons.vpn_key,
+                          color: Colors.grey,
                         ),
+                        controller: passwordController,
+                        keyboardType: TextInputType.numberWithOptions(),
+                        validate: (value) {
+                          if (value!.isEmpty) {
+                            return ("Password is required for login");
+                          }
+                          if (!regPass.hasMatch(value)) {
+                            return ("Enter Valid Password(Min.6 Character)");
+                          }
+                        },
+                        textInputAction: TextInputAction.done,
+                        labelText: "PASSWORD",
                       ),
                       SizedBox(
                         height: 15,
@@ -179,26 +147,18 @@ class _LoginState extends State<Login> {
                               },
                               child: Row(
                                 children: [
-<<<<<<< HEAD
-                                  Text("LOGIN",                                      style: TextStyle(
-=======
                                   Text("LOGIN",
                                       style: TextStyle(
->>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
                                           color: Colors.black,
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold)),
                                   SizedBox(
                                     width: 5,
                                   ),
-<<<<<<< HEAD
-                                  Icon(Icons.arrow_forward_rounded, color: Colors.black,)
-=======
                                   Icon(
                                     Icons.arrow_forward_rounded,
                                     color: Colors.black,
                                   )
->>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
                                 ],
                               )),
                         ),
@@ -291,7 +251,7 @@ class _LoginState extends State<Login> {
       await auth
           .signInWithEmailAndPassword(
               email: emailController.text.trim(),
-              password: paswordController.text.trim())
+              password: passwordController.text.trim())
           .then((value) async {
         Fluttertoast.showToast(msg: "Login successfully");
         SharedPreferences preferences = await SharedPreferences.getInstance();

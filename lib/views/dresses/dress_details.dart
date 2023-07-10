@@ -260,10 +260,10 @@ class DressDetails1 extends StatelessWidget {
                     width: 40,
                   ),
                   Expanded(
-                    child: RaisedButton(
-                      color: Colors.grey,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
+                    child: ElevatedButton(
+                      // color: Colors.grey,
+                      // shape: RoundedRectangleBorder(
+                      //     borderRadius: BorderRadius.circular(10)),
                       onPressed: () {
                         dressController.addDressItem(dressproduct);
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> CartScreen()));
