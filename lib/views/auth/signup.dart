@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:online_shopping/utils/custom_button.dart';
 import 'package:online_shopping/utils/custon_textfield.dart';
 import 'package:online_shopping/utils/constants.dart';
-import 'package:online_shopping/views/auth_screen/login.dart';
+import 'package:online_shopping/views/auth/login.dart';
 import '../starter/home_screen.dart';
 
 class Signup extends StatefulWidget {
@@ -134,7 +135,7 @@ class _SignupState extends State<Signup> {
                             Icons.vpn_key,
                             color: Colors.grey,
                           ),
-                          controller: emailController,
+                          controller: passwordController,
                           keyboardType: TextInputType.numberWithOptions(),
                           validate: (value) {
                             if (value!.isEmpty) {
@@ -172,78 +173,39 @@ class _SignupState extends State<Signup> {
                         SizedBox(
                           height: 10,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 198.0),
-                          child: Container(
-                            height: 50,
-                            width: 120,
-                            decoration: BoxDecoration(
-                                color: Color.fromRGBO(240, 218, 151, 1.0),
-                                borderRadius: BorderRadius.circular(12)),
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
-                                  shape: new RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(12.0),
-                                  ),
-                                ),
-                                onPressed: () {
-                                  signUp();
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Login()));
-                                  //  print(confirmPasswordController.text);
-                                },
-                                child: Row(
-                                  children: [
-                                    Text("SIGNUP",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold)),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Icon(
-                                      Icons.arrow_forward_rounded,
-                                      color: Colors.black,
-                                    )
-                                  ],
-                                )),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Text("Already have an account?",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.grey)),
-                            SizedBox(
-                              width: 3,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => HomeScreen()));
-                                },
-                                child: Text(
-                                  "Log in",
+                        CustomButton(buttonText: 'SINGUP', onPressed: (){}),
+                        // SizedBox(
+                        //   height: 20,
+                        // ),
+                        Align(alignment: Alignment.bottomCenter,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text("Already have an account?",
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
-                                      color:
-                                          Color.fromRGBO(240, 218, 151, 1.0)),
-                                ))
-                          ],
+                                      color: Colors.grey)),
+                              SizedBox(
+                                width: 3,
+                              ),
+                              InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomeScreen()));
+                                  },
+                                  child: Text(
+                                    "Log in",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Color.fromRGBO(240, 218, 151, 1.0)),
+                                  ))
+                            ],
+                          ),
                         )
                       ],
                     ),

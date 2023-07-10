@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:online_shopping/utils/custon_textfield.dart';
 import 'package:online_shopping/utils/constants.dart';
-import 'package:online_shopping/views/auth_screen/signup.dart';
+import 'package:online_shopping/views/auth/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../starter/home_screen.dart';
