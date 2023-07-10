@@ -179,18 +179,26 @@ class _LoginState extends State<Login> {
                               },
                               child: Row(
                                 children: [
+<<<<<<< HEAD
+                                  Text("LOGIN",                                      style: TextStyle(
+=======
                                   Text("LOGIN",
                                       style: TextStyle(
+>>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
                                           color: Colors.black,
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold)),
                                   SizedBox(
                                     width: 5,
                                   ),
+<<<<<<< HEAD
+                                  Icon(Icons.arrow_forward_rounded, color: Colors.black,)
+=======
                                   Icon(
                                     Icons.arrow_forward_rounded,
                                     color: Colors.black,
                                   )
+>>>>>>> 16f7b452829527a2c96893f8db6b564edc8b3ab3
                                 ],
                               )),
                         ),

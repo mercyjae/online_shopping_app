@@ -54,6 +54,28 @@ class _OnboardingState extends State<Onboarding> {
       ),
       bottomSheet: isLastPage
           ? Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+            child: TextButton(
+                style: TextButton.styleFrom(
+                    primary: Color.fromRGBO(240, 218, 151, 1.0),
+                    backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
+                    minimumSize: Size.fromHeight(60),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30))),
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setBool("showLogin", true);
+                  Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (context) =>Login()));
+                },
+                child: Text(
+                  "LET'S GO SHOPPING",
+                  style: TextStyle(color: Colors.black,
+                  fontSize: 15,
+                          fontWeight: FontWeight.w600),
+                )),
+          )
+
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
               child: TextButton(
                   style: TextButton.styleFrom(
@@ -80,16 +102,17 @@ class _OnboardingState extends State<Onboarding> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
+                    child: Text(
+                      "SKIP",
+                      style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600)
+                    ),
                     child: Text("SKIP",
                         style: TextStyle(
                             color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600)),
-                    onPressed: () {
-                      controller.jumpTo(2);
-                    },
-                  ),
-                  Center(
+            Center(
                       child: SmoothPageIndicator(
                     controller: controller,
                     count: 3,
@@ -100,10 +123,19 @@ class _OnboardingState extends State<Onboarding> {
                     onDotClicked: (index) => controller.animateToPage(index,
                         duration: Duration(milliseconds: 500),
                         curve: Curves.easeInOut),
-                  )),
+                  )),                  fontSize: 15,
+                            fontWeight: FontWeight.w600)),
+                    onPressed: () {
+                      controller.jumpTo(2);
+                    },
+                  ),
+                
                   TextButton(
                     child: Text("NEXT",
+
+                          style: TextStyle(
                         style: TextStyle(
+
                             color: Colors.black,
                             fontSize: 15,
                             fontWeight: FontWeight.w600)),

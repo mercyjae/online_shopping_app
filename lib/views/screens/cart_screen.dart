@@ -18,14 +18,14 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(leading: IconButton(icon: Icon(Icons.arrow_back,color: Colors.black,),
-        onPressed: (){Navigator.pop(context);},),
-        backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
-        title: Text(
-          "Cart",
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
+      appBar: AppBar(backgroundColor:  Color.fromRGBO(240, 218, 151, 1.0),
+      leading: IconButton(icon: Icon(Icons.arrow_back,),
+      onPressed: (){},color: Colors.black,),
+        title: Text("Cart",style: TextStyle(color: Colors.black),
+),),
+
+
+
       body: GetBuilder<CartController>(builder: (cartController) {
         var _cartList = cartController.getItems;
         return Column(
@@ -168,9 +168,8 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ),
                     ),
-                  )
-                ],
-              ),
+
+
             ),
             //SizedBox(height: 100,),
           ],
