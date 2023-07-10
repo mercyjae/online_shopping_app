@@ -94,6 +94,7 @@ class _LoginState extends State<Login> {
                           if (!regPass.hasMatch(value)) {
                             return ("Enter Valid Password(Min.6 Character)");
                           }
+                          return null;
                         },
                         textInputAction: TextInputAction.done,
                         labelText: "PASSWORD",
@@ -137,7 +138,7 @@ class _LoginState extends State<Login> {
                               borderRadius: BorderRadius.circular(12)),
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                primary: Color.fromRGBO(240, 218, 151, 1.0),
+                                backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
                                 shape: new RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(15.0),
                                 ),

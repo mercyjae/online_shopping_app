@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'bag_product.dart';
+import 'bag_model.dart';
 
 List<Product> shoe =[
   Product(

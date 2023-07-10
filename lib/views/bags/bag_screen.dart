@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shopping/utils/item_card1.dart';
-import 'package:online_shopping/model/bag_product.dart';
+import 'package:online_shopping/model/bag_model.dart';
 
 import 'bag_details_screen.dart';
 

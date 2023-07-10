@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'bag_product.dart';
+import 'bag_model.dart';
 
 class CartModel {
   final int id;

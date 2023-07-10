@@ -5,12 +5,7 @@ import 'package:get/get.dart';
 import 'package:online_shopping/views/splash_screen.dart';
 
 
-import 'package:online_shopping/views/auth_screen/login.dart';
-import 'package:online_shopping/views/starter/home_screen.dart';
-import 'package:online_shopping/views/starter/onboarding.dart';
 
-import 'package:online_shopping/views/splash_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() async {

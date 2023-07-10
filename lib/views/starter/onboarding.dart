@@ -57,8 +57,7 @@ class _OnboardingState extends State<Onboarding> {
             padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
             child: TextButton(
                 style: TextButton.styleFrom(
-                    primary: Color.fromRGBO(240, 218, 151, 1.0),
-                    backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
+                    foregroundColor: Color.fromRGBO(240, 218, 151, 1.0), backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
                     minimumSize: Size.fromHeight(60),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30))),

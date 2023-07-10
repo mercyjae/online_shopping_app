@@ -77,6 +77,7 @@ class _SignupState extends State<Signup> {
                             if (!regPass.hasMatch(value)) {
                               return ("Enter 6 characters");
                             }
+                            return null;
                           },
                           textInputAction: TextInputAction.next,
                           labelText: "First Name",
@@ -98,6 +99,7 @@ class _SignupState extends State<Signup> {
                             if (!regPass.hasMatch(value)) {
                               return ("Enter 6 characters");
                             }
+                            return null;
                           },
                           textInputAction: TextInputAction.next,
                           labelText: 'Last Name',
@@ -141,6 +143,7 @@ class _SignupState extends State<Signup> {
                             if (!regPass.hasMatch(value)) {
                               return ("Enter Valid Password(Min.6 Character)");
                             }
+                            return null;
                           },
                           textInputAction: TextInputAction.next,
                           labelText: "Password",
@@ -179,7 +182,7 @@ class _SignupState extends State<Signup> {
                                 borderRadius: BorderRadius.circular(12)),
                             child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color.fromRGBO(240, 218, 151, 1.0),
+                                  backgroundColor: Color.fromRGBO(240, 218, 151, 1.0),
                                   shape: new RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(12.0),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_shopping/model/bag_product.dart';
+import 'package:online_shopping/model/bag_model.dart';
 
 import 'constants.dart';
 

@@ -6,7 +6,7 @@ import 'package:online_shopping/utils/color_icon.dart';
 import 'package:online_shopping/utils/constants.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/controllers/shoes_controller.dart';
-import 'package:online_shopping/model/bag_product.dart';
+import 'package:online_shopping/model/bag_model.dart';
 
 import '../cart/cart_screen.dart';
 
