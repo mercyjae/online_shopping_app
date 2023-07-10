@@ -6,7 +6,7 @@ import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/views/auth_screen/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../screens/home_screen.dart';
+import '../starter/home_screen.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);

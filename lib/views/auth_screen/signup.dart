@@ -4,7 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:online_shopping/components/custon_textfield.dart';
 import 'package:online_shopping/constants.dart';
 import 'package:online_shopping/views/auth_screen/login.dart';
-import '../screens/home_screen.dart';
+import '../starter/home_screen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);

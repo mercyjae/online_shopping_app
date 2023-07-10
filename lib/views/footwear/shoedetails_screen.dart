@@ -8,7 +8,7 @@ import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/controllers/shoes_controller.dart';
 import 'package:online_shopping/model/bag_product.dart';
 
-import '../screens/cart_screen.dart';
+import '../cart/cart_screen.dart';
 
 
 

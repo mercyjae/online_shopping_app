@@ -6,7 +6,7 @@ import 'package:online_shopping/controllers/bag_controller.dart';
 import 'package:online_shopping/controllers/cart_controller.dart';
 import 'package:online_shopping/model/bag_product.dart';
 
-import '../screens/cart_screen.dart';
+import '../cart/cart_screen.dart';
 
 
 class DetailsScreen extends StatefulWidget {

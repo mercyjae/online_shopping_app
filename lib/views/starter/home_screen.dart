@@ -4,7 +4,7 @@ import 'package:online_shopping/views/eyeglass/eyeglass_screen.dart';
 import 'package:online_shopping/views/footwear/shoes_screen.dart';
 import 'package:online_shopping/views/bags/bag_screen.dart';
 
-import 'cart_screen.dart';
+import '../cart/cart_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
